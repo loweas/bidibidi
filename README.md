@@ -26,8 +26,8 @@ URL’s such as :
 #### Social Media:
 I already scrapped Instagram JSON  data given in assets folder:
 
- #bidibidirefugeesettlement
- #bidibidi,
+ #bidibidirefugeesettlement \
+ #bidibidi \
 1281867775213393
 
 Working on locating surrounding Instagram locations IDs.
