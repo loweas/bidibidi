@@ -1,6 +1,5 @@
-# bidibidi
 
-### Title : Bidi Bidi Refugee Settlement Camp
+# Title : Bidi Bidi Refugee Settlement Camp
 
 ### Group Members:
  Paul, Owen and Ashley
