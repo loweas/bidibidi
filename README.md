@@ -41,5 +41,7 @@ Confrontation and - Current Data
 The Resolution - Current Social Media Involvement. (possibly predictions for the future of the camp, extrapolate on data trends from the previous section)
 Examples :
 [#StandingRock](https://winkyt.github.io/standwithstandingrock/)
+
 [The Uprooted](http://storymaps.esri.com/stories/2016/the-uprooted/index.html)
+
 [On The Front Lines of Famine](https://storymaps.esri.com/stories/2017/hunger-crisis/index.html)
