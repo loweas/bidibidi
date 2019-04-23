@@ -5,7 +5,8 @@
  Paul, Owen and Ashley
 
 ### The Motivation:
-Bidi Bidi is a refugee camp is located in northern Uganda mostly made up of South Sudanese seeking refugee from the South Sudanese civil war which began in 2013. The peak of the war occured in 2016 and this is when the greatest amount of refugees migrated to the camp. For a brief time in 2017 it is the largest refugee settlement in the world. This project will focus on the technique of story-maping to share some of the experience within the camp.
+Bidi Bidi is a refugee camp is located in northern Uganda mostly made up of South Sudanese seeking refugee from the South Sudanese civil war which began in 2013. The peak of the war occured in 2016 and this is when the greatest amount of refugees migrated to the camp. For a brief time in 2017 it is the largest refugee settlement in the world. This project will focus on the technique of story-maping to share some of the experience within the camp. Our overall goal for the project is to synthesize changes in the Bidibidi camp (origins, development, current trends, predictions) with what everyday life in the camp actually looks like for those living there.
+
 
 ### The Description :
  First the project will give some background on the situation and how it arised, placing it into an historical context.
@@ -37,6 +38,8 @@ Twitter API
 The current direction is a story-map visualization which will follow the structure layer as :
 The Setup, - Historical
 Confrontation and - Current Data
-The Resolution - Current Social Media Involvement.
+The Resolution - Current Social Media Involvement. (possibly predictions for the future of the camp, extrapolate on data trends from the previous section)
 Examples :
 [#StandingRock](https://winkyt.github.io/standwithstandingrock/)
+[The Uprooted](http://storymaps.esri.com/stories/2016/the-uprooted/index.html)
+[On The Front Lines of Famine](https://storymaps.esri.com/stories/2017/hunger-crisis/index.html)
