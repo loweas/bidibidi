@@ -39,7 +39,9 @@ The current direction is a story-map visualization which will follow the structu
 The Setup, - Historical
 Confrontation and - Current Data
 The Resolution - Current Social Media Involvement. (possibly predictions for the future of the camp, extrapolate on data trends from the previous section)
+
 Examples :
+
 [#StandingRock](https://winkyt.github.io/standwithstandingrock/)
 
 [The Uprooted](http://storymaps.esri.com/stories/2016/the-uprooted/index.html)
