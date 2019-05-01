@@ -14,6 +14,8 @@ Next we will move into some of the geospatial data available on the settlement t
 Thirdly, we will have a section dedicated to the current social media indicators people are using to share stories with in the camp. This indicators will included Instagram data such as #bidibidi (this tag will need to be parsed with other tags to correctly identify the camp), #bidibidirefugeesettlement, and the location ID tag : 1281867775213393. From this data we can create wordclouds to express an idea of place and highlight photos with large engagement (likes and Comments).  Also, I would like to explore the API of twitter to see how to incorporate some of other social media platforms.
 
 ### The Data:
+#### QGIS Screen
+![QGIS](img/QGIS.png)
 #### Historical Context:
 When introducing the project we will use historical data. Currently focusing on UNHCR likes to JSON but will update with more as data is found:
 [Population Growth of Entire Region ](https://data2.unhcr.org/api/population/get/timeseries?widget_id=84726&geo_id=220&sv_id=5&population_group=5071&frequency=day&fromDate=1900-01-01)

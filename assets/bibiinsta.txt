@@ -1,0 +1,2 @@
+location-id: 	 title: 	 lat: 	 lng: 
+1.28187E+15	" Bidibidi Refugee Settlement,  Northern Uganda"	3.44639	31.2703
