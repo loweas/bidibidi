@@ -22,6 +22,7 @@ Data | Data Source | Website |
 ----|-----------|---------|
 Uganda | The Humanitarian Data Exchange | https://data.humdata.org/group/uga |
 Instagram Data | Instagram | https://www.instagram.com/explore/tags/bidibidirefugeesettlement/ https://www.instagram.com/explore/tags/bidibidi/ https://www.instagram.com/explore/location/1281867775213393/ |
+Uganda Population | unhcr |https://data2.unhcr.org/api/population/get/timeseries?widget_id=84726&geo_id=220&sv_id=5&population_group=5071&frequency=day&fromDate=1900-01-01 https://data2.unhcr.org/api/population/get/sublocation?widget_id=84724&geo_id=220&sv_id=5&population_collection=5&forcesublocation=0&fromDate=1900-01-01|
 
 #### Historical Context:
 When introducing the project we will use historical data. Currently focusing on UNHCR likes to JSON but will update with more as data is found:
