@@ -1,6 +1,10 @@
 
 # Title : Bidi Bidi Refugee Settlement Camp
 
+### Rough Sketched-Out Idea
+![image1](img/IMG_6277.jpeg)
+![image2](img/IMG_6278.jpeg)
+
 ### Group Members:
  Paul, Owen and Ashley
 
