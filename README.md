@@ -1,5 +1,5 @@
 
-# Title : Bidi Bidi Refugee Settlement Camp
+# Title : [Bidi Bidi Refugee Settlement Camp](https://loweas.github.io/bidibidi/)
 
 ### Rough Sketched-Out Idea
 ![image1](img/IMG_6277.jpeg)
