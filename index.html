@@ -5,194 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Bidibidi Refugee Settlement</title>
-    <meta name="description" content="WebSlides is the easiest way to make HTML presentations, portfolios, and landings. Just essential features.">
+    <meta name="description" content="Bidibidi Refugee Settlement">
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
     <link rel="stylesheet" type='text/css' media='all' href="static/css/webslides.css">
     <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
     <!-- CSS Base -->
-    <link rel="stylesheet" type='text/css' media='all' href="css/webslides.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+
+
     <!-- Javascript Library -->
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="js/webslides.min.js"></script>
-    <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
+    <script src="static/js/webslides.min.js"></script>
+  <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
+
   </head>
+
   <style>
-  .video-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  .video-container video {
-    /* Make video to at least 100% wide and tall */
-    min-width: 100%;
-    min-height: 100%;
 
-    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
-    width: auto;
-    height: auto;
-
-    /* Center the video */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  }
   </style>
   <body>
-    <article id="webslides">
-      <!-- the landing scene -->
-      <div class="video-container">
-      <section class="bg-black">
-        <video class="background-video dark" autoplay muted loop id="myVideo">
-          <source src="assets/bidibidi.mp4" type="video/mp4">
-        </video>
-        </div>
-        <div class="wrap aligncenter">
-          <h1>
-          </h1>
-        </div>
+
+        <main role= "main">
+          <article id="webslides">
+            <section class="bg-apple">
+          <video class="background-video dark" autoplay muted loop>
+              <source src="assets/bidibidi.mp4" type="video/mp4">
+          </video>
+          <div class="wrap aligncenter">
+          </div>
       </section>
-      <!-- the first map -->
-      <section class="bg-apple">
+      <section class="bg-apple slide-top">
         <div id="mymap"></div>
-      </section>
-      <!-- the second map -->
-      <section class="bg-apple">
-        <div id="mymap2"></div>
-      </section>
-      <!-- the first chart -->
-      <section class="bg-apple">
-        <div id="mychart1">
-          <div id="chart1"></div>
-          <span id="load">Load</span>
-          <span id="unload">Unload</span>
-        </div>
-      </section>
-      <!-- the second chart -->
-      <section class="bg-apple">
-        <div id="mychart2">
-          <div id="chart2"></div>
-        </div>
-      </section>
+    </section>
+
     </article>
 
+    </main>
+
     <script>
-      // make the web slide object.
-      var ws = new WebSlides();
-
-      // declare the first map object
-      var map = L.map("mymap", {
-        zoomControl: false,
-        scrollWheelZoom: false
-      }).setView([1.290270, 103.851959], 8);
-
-      // add a basemap to the first map
-      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png', {
-        maxZoom: 19
-      }).addTo(map);
-
-      // decalre the second map object
-      var map2 = L.map("mymap2", {
-        zoomControl: false,
-        scrollWheelZoom: false
-      }).fitBounds([
-        [49.3, -138.5],
-        [22.8, -67.4]
-      ]);
-
-      // add a basemap for the second map
-      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}@2x.png', {
-        maxZoom: 19
-      }).addTo(map2);
+//     var map = L.map("mymap", {zoomControl: false, scrollWheelZoom: false}).setView([44.3682, -121.1406], 7);
+//
+// var map2 = L.map("mymap2", {zoomControl: false, scrollWheelZoom: false}).fitBounds([
+//   [49.3, -138.5],
+//   [22.8, -67.4]
+// ]);
+//
+//   L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ', {
+//       maxZoom: 19
+//   }).addTo(map);
+var map = L.map("mymap", {zoomControl: false, scrollWheelZoom: false}).setView([4.3894481, 15.8365927], 5);
 
 
-      // bind a function to the slide change event of web slides
-      ws.el.addEventListener('ws:slide-change', function() {
 
-        // capture all the div under the currently displaying section
-        crtDiv = $(".current div");
-        //Map 1 'flyto' animation location and function
-        if (crtDiv.attr("id") === "mymap") {
-          // Checks if the map container size changed and updates the map if so
-          map.invalidateSize();
-          //Fly to a new location.
-          map.flyTo([45.514685, -122.987080], 10, {
-            animate: true,
-            duration: 23
-          });
-        } else if (crtDiv.attr("id") === "mymap2") {
-          map2.invalidateSize();
-          // fitBounds will fit the map to the boundary of the viewport (monitor)
-          map2.fitBounds([
-            [49.3, -138.5],
-            [22.8, -67.4]
-          ]);
-        } else if (crtDiv.attr("id") === "mychart1") {
-          var chart1 = c3.generate({
-            bindto: "#chart1",
-            data: {
-              columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-              ],
-              axes: {
-                data2: 'y2'
-              },
-              types: {
-                data2: 'line' // ADD
-              }
-            },
-            axis: {
-              y: {
-                label: {
-                  text: 'Y Label',
-                  position: 'outer-middle'
-                }
-              },
-              y2: {
-                show: true,
-                label: {
-                  text: 'Y2 Label',
-                  position: 'outer-middle'
-                }
-              }
-            }
-          });
+L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ', {
+    maxZoom: 19
+}).addTo(map);
 
-          $("#load").on("mouseover", function() {
 
-            chart1.load({
-              columns: [
-                ['data3', 300, 100, 250, 150, 300, 150, 500],
-                ['data4', 100, 200, 150, 50, 100, 250]
-              ]
-            });
+    ws = new WebSlides();
+    ws.el.addEventListener('ws:slide-change', function () {
 
-          })
+    crtDiv = $(".current div");
+    //Map 1 'flyto' animation location and function
+    if (crtDiv.attr("id") === "mymap") {
+        map.invalidateSize();
+        //starting location latitude and longitude
+        map.setView([4.3894481, 15.8365927], 5);
+        //Fly to animation  new latitude and longitude
+        map.flyTo([2.5121016, 31.6202367,], 8, {animate: true, duration: 10});
+        //outline of smith roack
+    }
 
-          $("#unload").on("click", function() {
 
-            chart1.unload({
-              ids: ['data3', 'data4']
-            });
+    if (crtDiv.attr("id") === "mymap2") {
+      map.invalidateSize();
+      //starting location latitude and longitude
+      map.setView([44.366, -121.134], 15);
+    }
 
-          });
-        } else if (crtDiv.attr("id") === "mychart2") {
-
+    if (crtDiv.attr("id") === "mychart2") {
 
           Promise.all([
-            d3.csv('assets/test1.csv'),
-            d3.csv('assets/test2.csv'),
-            d3.json('assets/counties.geojson')
+            d3.csv('assets/sm90.csv'),
+            d3.csv('assets/visits.csv'),
           ]).then(function(datasets) {
 
             var dataseries1 = ["t"];
@@ -203,7 +104,8 @@
               dataseries2.push(+d["data2"]);
             });
 
-            var chart2 = c3.generate({
+
+          var chart = c3.generate({
               bindto: '#chart2',
               data: {
                 columns: [
@@ -233,13 +135,17 @@
                   }
                 }
               }
-            });
+          });
 
           })
-        }
 
-      });
+    }
+
+
+});
+
+
+
     </script>
-  </body>
-
-  </html>
+</body>
+</html>
