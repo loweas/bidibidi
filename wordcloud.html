@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bidibidi Refugee Settlement</title>
+    <meta name="description" content="Bidibidi Refugee Settlement">
+
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Hind+Siliguri|Molengo|Noto+Sans+TC" rel="stylesheet">  <link rel="stylesheet" type='text/css' media='all' href="static/css/webslides.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
+    <!-- CSS Base -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
+
+
+    <!-- Javascript Library -->
+    <script src="js/jqcloud.css"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="static/js/webslides.min.js"></script>
+  <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  	<script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
+  	<script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
+  </head>
+
+  <style>
+    html, body, #cloud { width: 100%; height: 100%; margin: 0; background: #EE5314;}
+    .jqcloud-word {
+        font-family: 'Alegreya Sans SC', sans-serif;
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+
+    i {
+     width: 0.5px;
+     height: 16px;
+     float: left;
+     /* margin-right: 8px; */
+     opacity: 0.7;
+   }
+   #area {
+line-height: 12px;
+width: 280px;
+position: absolute;
+z-index: 1000;
+left: 10px;
+bottom: 10px;
+color: #a0a0a0;
+font-family: 'Alegreya Sans SC', sans-serif;
+padding: 6px 8px;
+background: #000000;
+background: rgba(38, 38, 38, 0.5);
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+}
+#area i {
+width: 25px;
+height: 16px;
+float: left;
+/* margin-right: 8px; */
+opacity: 0.7;
+}
+
+#area p {
+font-size: 12px;
+line-height: 16px;
+margin: 0;
+}
+a:link {
+color: black;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:visited {
+color: #FF6600;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+color: black;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+color: orange;
+background-color: transparent;
+text-decoration: underline;
+}
+  </style>
+  <body>
+    <!--Scenes:
+    <!--1. Movie of Bidi-->
+    <!--2. Fly to Uganda with info Panel-->
+    <!--. bidibidi tags-->
+
+        <main role= "main">
+          <article id="webslides">
+            <section class="bg-apple">
+              <div id="cloud"></div>
+          <div class="wrap aligncenter">
+          </div>
+
+    </article>
+
+    </main>
+
+    <script>
+function wordFrequency(txt, freq) {
+
+	var wordArray = txt.split(/[ .?!,*'"”“]/);
+	//var wordArray = txt.split(" ");
+	var newArray = [],
+		filteredArray = [],
+		wordObj;
+	wordArray.forEach(function(word) {
+		wordObj = newArray.filter(function(w) {
+			return w.text === word.toLowerCase();
+		});
+		if (wordObj.length) {
+			wordObj[0].weight += 1;
+		} else {
+			newArray.push({
+				text: word,
+				weight: 1
+			});
+		}
+	});
+
+	var words = ["[]",",","[","]","","][","][][","][][][","][][][]["];
+
+	newArray.filter(function(word) {
+		if (!words.includes(word.text) && word.weight > freq) {
+			filteredArray.push(word);
+		}
+	});
+
+	return filteredArray;
+
+}
+
+colorscheme = chroma.scale('OrRd').colors(10).reverse(); //colorscheme = chroma.scale('OrRd').colors(5);
+
+
+
+ws.el.addEventListener('ws:slide-change', function() {
+
+
+  // capture all the div under the currently displaying section
+  crtDiv = $(".current div");
+  //Map 1 'flyto' animation location and function
+  if (crtDiv.attr("id") === "cloud") {
+    Promise.all([d3.csv('assets/brs75.csv')])
+    .then(function(data) {
+    var texts = "";
+    for(var i=0;i< data.length; i++){
+
+        texts += data[i].tags ;
+
+    }
+
+    for (var j = 0; j < colorscheme.length; j++) {
+      $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
+
+
+
+  var frequencyList = wordFrequency(texts, 10);
+
+    $("#cloud").jQCloud(frequencyList, {
+       colors: colorscheme,
+       autoResize: true,
+       delay: 5,
+       shape: 'rectangular',
+       fontSize: {
+           from: 0.06,
+           to: 0.01
+       }
+    }),
+});
+
+},
+
+  };
+
+
+
+    </script>
+</body>
+</html>

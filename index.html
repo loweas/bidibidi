@@ -175,18 +175,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/t
     }
 
 
-    if (crtDiv.attr("id") === "mymap2") {
-      map.invalidateSize();
-      //starting location latitude and longitude
-      map.setView([2.5121016, 31.6202367,], 8);
-    }
-
-    if (crtDiv.attr("id") === "worduniverse") {
-        $("#worduniverse")
-            .empty()
-            .append('<canvas id="canvas2d"></canvas>');
-        new StarField('worduniverse').render(40, 3);
-    }
 
 
 
