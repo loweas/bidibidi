@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
 
 
     <!-- Javascript Library -->
+    <script src="js/jqcloud.js"></script>
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="static/js/webslides.min.js"></script>
@@ -27,9 +29,76 @@
   </head>
 
   <style>
+    html, body, #cloud { width: 100%; height: 100%; margin: 0; background: #EE5314;}
+    .jqcloud-word {
+        font-family: Wendy One;
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    }
 
+    i {
+     width: 0.5px;
+     height: 16px;
+     float: left;
+     /* margin-right: 8px; */
+     opacity: 0.7;
+   }
+   #area {
+line-height: 12px;
+width: 280px;
+position: absolute;
+z-index: 1000;
+left: 10px;
+bottom: 10px;
+color: #a0a0a0;
+font-family: Wendy One;
+padding: 6px 8px;
+background: #000000;
+background: rgba(38, 38, 38, 0.5);
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+}
+#area i {
+width: 25px;
+height: 16px;
+float: left;
+/* margin-right: 8px; */
+opacity: 0.7;
+}
+
+#area p {
+font-size: 12px;
+line-height: 16px;
+margin: 0;
+}
+a:link {
+color: black;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:visited {
+color: #FF6600;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+color: black;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+color: orange;
+background-color: transparent;
+text-decoration: underline;
+}
   </style>
   <body>
+    <!--Scenes:
+    <!--1. Movie of Bidi-->
+    <!--2. Fly to Uganda with info Panel-->
+    <!--. bidibidi tags-->
 
         <main role= "main">
           <article id="webslides">
@@ -42,8 +111,19 @@
       </section>
       <section class="bg-apple slide-top">
         <div id="mymap"></div>
+        <div class="wrap">
+          <div class="content-left">
+            <div id="area"> Historical information on South Sudan</div>
+          </div>
+          </div>
     </section>
-
+    <section class="bg-apple slide-top">
+      <div id="mycloud"></div>
+      <div class="wrap">
+        <div class="content-left">
+  </div>
+        </div>
+  </section>
     </article>
 
     </main>
@@ -59,13 +139,14 @@
 //   L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ', {
 //       maxZoom: 19
 //   }).addTo(map);
-var map = L.map("mymap", {zoomControl: false, scrollWheelZoom: false}).setView([4.3894481, 15.8365927], 5);
+var map = L.map("mymap", {zoomControl: false, scrollWheelZoom: false}).setView([4.3894481, 15.8365927], 6);
 
 
 
 L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ', {
     maxZoom: 19
 }).addTo(map);
+
 
 
     ws = new WebSlides();
@@ -78,8 +159,18 @@ L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/t
         //starting location latitude and longitude
         map.setView([4.3894481, 15.8365927], 5);
         //Fly to animation  new latitude and longitude
-        map.flyTo([2.5121016, 31.6202367,], 8, {animate: true, duration: 10});
+        map.flyTo([3.1867772, 31.4488357], 8, {animate: true, duration: 8});
         // Boarder
+        L.geoJson.ajax("assets/settlements.geojson", {
+                        style: {
+                            fillColor: '#b4b4b4',
+                            fillOpacity: 0.4,
+                            weight: 3,
+                            opacity: 0.6,
+                            color: '#000000',
+                            dashArray: '10'
+                        }
+                    }).addTo(map);
 
 
     }
@@ -88,60 +179,17 @@ L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjv4ijme33cv51fo88tiywo86/t
     if (crtDiv.attr("id") === "mymap2") {
       map.invalidateSize();
       //starting location latitude and longitude
-      map.setView([44.366, -121.134], 15);
+      map.setView([2.5121016, 31.6202367,], 8);
     }
 
-    if (crtDiv.attr("id") === "mychart2") {
-
-          Promise.all([
-            d3.csv('assets/sm90.csv'),
-            d3.csv('assets/visits.csv'),
-          ]).then(function(datasets) {
-
-            var dataseries1 = ["t"];
-            var dataseries2 = ["q"];
-
-            datasets[0].forEach(function(d) {
-              dataseries1.push(+d["data1"]);
-              dataseries2.push(+d["data2"]);
-            });
-
-
-          var chart = c3.generate({
-              bindto: '#chart2',
-              data: {
-                columns: [
-                  dataseries1,
-                  dataseries2
-                ],
-                axes: {
-                  dataseries1: 'y2'
-                },
-                types: {
-                  t: 'bar',
-                  q: 'spline' // ADD
-                }
-              },
-              axis: {
-                y: {
-                  label: {
-                    text: 'Y Label',
-                    position: 'outer-middle'
-                  }
-                },
-                y2: {
-                  show: true,
-                  label: {
-                    text: 'Y2 Label',
-                    position: 'outer-middle'
-                  }
-                }
-              }
-          });
-
-          })
-
+    if (crtDiv.attr("id") === "worduniverse") {
+        $("#worduniverse")
+            .empty()
+            .append('<canvas id="canvas2d"></canvas>');
+        new StarField('worduniverse').render(40, 3);
     }
+
+
 
 
 });
