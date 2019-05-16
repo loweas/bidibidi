@@ -6,9 +6,9 @@
 
     <title>Bidibidi Refugee Settlement</title>
     <meta name="description" content="Bidibidi Refugee Settlement">
-
-  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Hind+Siliguri|Molengo|Noto+Sans+TC" rel="stylesheet">  <link rel="stylesheet" type='text/css' media='all' href="static/css/webslides.css">
-    <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
+  <link rel="stylesheet" type='text/css' media='all' href="css/webslides.css">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Hind+Siliguri|Molengo|Noto+Sans+TC" rel="stylesheet">  
+    <link rel="stylesheet" type='text/css' media='all' href="css/svg-icons.css">
     <!-- CSS Base -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -18,80 +18,17 @@
 
 
     <!-- Javascript Library -->
-    <script src="js/jqcloud.js"></script>
+
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="static/js/webslides.min.js"></script>
+    <script src="js/webslides.min.js"></script>
   <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
 
   </head>
 
   <style>
-    html, body, #cloud { width: 100%; height: 100%; margin: 0; background: #EE5314;}
-    .jqcloud-word {
-        font-family: 'Alegreya Sans SC', sans-serif;
-        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-    }
 
-    i {
-     width: 0.5px;
-     height: 16px;
-     float: left;
-     /* margin-right: 8px; */
-     opacity: 0.7;
-   }
-   #area {
-line-height: 12px;
-width: 280px;
-position: absolute;
-z-index: 1000;
-left: 10px;
-bottom: 10px;
-color: #a0a0a0;
-font-family: 'Alegreya Sans SC', sans-serif;
-padding: 6px 8px;
-background: #000000;
-background: rgba(38, 38, 38, 0.5);
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-border-radius: 5px;
-}
-#area i {
-width: 25px;
-height: 16px;
-float: left;
-/* margin-right: 8px; */
-opacity: 0.7;
-}
-
-#area p {
-font-size: 12px;
-line-height: 16px;
-margin: 0;
-}
-a:link {
-color: black;
-background-color: transparent;
-text-decoration: none;
-}
-
-a:visited {
-color: #FF6600;
-background-color: transparent;
-text-decoration: none;
-}
-
-a:hover {
-color: black;
-background-color: transparent;
-text-decoration: underline;
-}
-
-a:active {
-color: orange;
-background-color: transparent;
-text-decoration: underline;
-}
   </style>
   <body>
     <!--Scenes:
@@ -99,7 +36,7 @@ text-decoration: underline;
     <!--2. Fly to Uganda with info Panel-->
     <!--. bidibidi tags-->
 
-        <main role= "main">
+
           <article id="webslides">
             <section class="bg-apple">
           <video class="background-video" autoplay muted loop>
@@ -116,16 +53,10 @@ text-decoration: underline;
           </div>
           </div>
     </section>
-    <section class="bg-apple slide-top">
-      <div id="mycloud"></div>
-      <div class="wrap">
-        <div class="content-left">
-  </div>
-        </div>
-  </section>
+
     </article>
 
-    </main>
+
 
     <script>
 //     var map = L.map("mymap", {zoomControl: false, scrollWheelZoom: false}).setView([44.3682, -121.1406], 7);
