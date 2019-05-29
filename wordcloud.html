@@ -17,98 +17,105 @@
 
 
   <style>
-		html,
-		body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			background: white;
-		}
-		h4 {
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: white;
+    }
+
+    h4 {
       color: orange;
-			font-family: 'Alegreya Sans SC', sans-serif;
+      font-family: 'Alegreya Sans SC', sans-serif;
       font-size: 40px;
 
-		}
-		#cloud {
-			font-family: 'Alegreya Sans SC', sans-serif;
-			text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-		}
+    }
 
-		.pos {
-			height: 400px;
-		}
+    #cloud {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+
+    .pos {
+      height: 400px;
+    }
+
     #chart {
       font-size: 20px;
       font-family: Wendy One;
-      color: black;
+      color: white
     }
+
     #area {
- line-height: 12px;
- width: 300px;
- position: absolute;
- z-index: 1000;
- left: 200px;
- top: 100px;
- color: #a0a0a0;
- font-family: Wendy One;
- padding: 6px 8px;
- background: #000000;
- background: rgba(38, 38, 38, 0.5);
- box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
- border-radius: 5px;
-}
-#area i {
- width: 25px;
- height: 16px;
- float: left;
- /* margin-right: 8px; */
- opacity: 0.7;
-}
+      line-height: 12px;
+      width: 300px;
+      position: absolute;
+      z-index: 1000;
+      left: 200px;
+      top: 100px;
+      color: #a0a0a0;
+      font-family: Wendy One;
+      padding: 6px 8px;
+      background: #000000;
+      background: rgba(38, 38, 38, 0.5);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
 
-#area p {
- font-size: 16px;
- line-height: 16px;
- margin: 0;
-}
-a:link {
-color: black;
-background-color: transparent;
-text-decoration: none;
-}
+    #area i {
+      width: 25px;
+      height: 16px;
+      float: left;
+      /* margin-right: 8px; */
+      opacity: 0.7;
+    }
 
-a:visited {
-color: orange;
-background-color: transparent;
-text-decoration: none;
-}
+    #area p {
+      font-size: 16px;
+      line-height: 16px;
+      margin: 0;
+    }
 
-a:hover {
-color: black;
-background-color: transparent;
-text-decoration: underline;
-}
+    a:link {
+      color: black;
+      background-color: transparent;
+      text-decoration: none;
+    }
 
-a:active {
-color: orange;
-background-color: transparent;
-text-decoration: underline;
-}
+    a:visited {
+      color: orange;
+      background-color: transparent;
+      text-decoration: none;
+    }
 
-	</style>
+    a:hover {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: orange;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  </style>
   <!-- Javascript Library -->
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/webslides.min.js"></script>
   <script src="js/jqcloud.js"></script>
-<!--<script src="https://scottwhitson.github.io/benton/js/jqcloud.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <!--<script src="https://scottwhitson.github.io/benton/js/jqcloud.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
-	<script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
-	<script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
-
+  <script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
+  <script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 </head>
 
 <body>
@@ -118,28 +125,28 @@ text-decoration: underline;
   <!--. bidibidi tags-->
   <article id="webslides">
     <section class="fullscreen">
-  <div class="wrap">
+      <div class="wrap">
 
         <div class="card-50 bg-white">
-            <figure id="cloud"></figure>
-           <div class="flex-content">
-               <span class="background" style="background-image:url('img/bidi.png')"></span>
+          <figure id="cloud"></figure>
+          <div class="flex-content">
+            <span class="background" style="background-image:url('img/bidi.png')"></span>
             <figure id="chart"></figure>
-            </div>
+          </div>
         </div>
-        </div>
-        <!-- end .grid-->
+      </div>
+      <!-- end .grid-->
 
-  <footer class="bg-trans-dark">
-             <div class="wrap">
-               <p>
-                 <span class="alignleft"> <a href="https://www.instagram.com/explore/locations/1281867775213393/bidibidi-refugee-settlement-northern-uganda/" title="Instagram">
-                 <img class="whitelogo" src="images/logos/instagram.svg" alt="Instagram">
-                 </a></span>
-                 <span class="alignright"> </span>
-              <br>Hashtags used at the geotagged Bidibidi Refugee Settlement Camp.  </p>
-             </div>
-           </footer>
+      <footer class="bg-trans-dark">
+        <div class="wrap">
+          <p>
+            <span class="alignleft"> <a href="https://www.instagram.com/explore/locations/1281867775213393/bidibidi-refugee-settlement-northern-uganda/" title="Instagram">
+                <img class="whitelogo" src="images/logos/instagram.svg" alt="Instagram">
+              </a></span>
+            <span class="alignright"> </span>
+            <br>Hashtags used at the geotagged Bidibidi Refugee Settlement Camp. </p>
+        </div>
+      </footer>
 
     </section>
     <section class="fullscreen">
@@ -188,86 +195,84 @@ text-decoration: underline;
     d3.csv('assets/brs75.csv').then(function(data) {
 
 
-var filter = crossfilter(data);
+      var filter = crossfilter(data);
 
-var all = filter.groupAll();
+      var all = filter.groupAll();
 
-var everything = filter.dimension(function(d) {
-return d
-});
-
-
-var dateDimension = filter.dimension(function(d) {
-
-return d.Year;
-});
-var dateDimensionGroup = dateDimension.group();
+      var everything = filter.dimension(function(d) {
+        return d
+      });
 
 
-var dateChart = dc.barChart('#chart');
-dateChart
-.dimension(dateDimension)
-.group(dateDimensionGroup)
-.elasticY(true)
-.x(d3.scaleOrdinal()) //
-.xUnits(dc.units.ordinal)
-.yAxis()
-.ticks(3); //timeDate object that has the format for the date
+      var dateDimension = filter.dimension(function(d) {
 
-dc.renderAll();
-
-// for (var j = 0; j < colorscheme.length; j++) {
-//   $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
-//
-
-var texts = "";
-everything.top(Infinity).filter(function(d) {
-return texts += (" " + d.tags);
-});
-
-var frequencyList = null;
-frequencyList = wordFrequency(texts, 1);
-
-$("#cloud").jQCloud(frequencyList, {
-colors: colorscheme,
-autoResize: true,
-delay: 5,
-shape: 'rectangular',
-fontSize: {
-  from: 0.1,
-  to: 0.02
-}
-});
+        return d.Year;
+      });
+      var dateDimensionGroup = dateDimension.group();
 
 
+      var dateChart = dc.barChart('#chart');
+      dateChart
+        .dimension(dateDimension)
+        .group(dateDimensionGroup)
+        .elasticY(true)
+        .x(d3.scaleOrdinal()) //
+        .xUnits(dc.units.ordinal)
+        .yAxis()
+        .ticks(3); //timeDate object that has the format for the date
 
-dateChart.on('filtered', function(chart, filter) {
+      dc.renderAll();
 
-var texts = "";
-everything.top(Infinity).filter(function(d) {
-  return texts += (" " + d.tags);
-});
+      // for (var j = 0; j < colorscheme.length; j++) {
+      //   $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
+      //
 
-frequencyList = wordFrequency(texts, 1);
-$('#cloud').jQCloud('destroy');
-$("#cloud").jQCloud(frequencyList, {
-  colors: colorscheme,
-  autoResize: true,
-  // steps: 20,
-  delay: 5,
-  shape: 'rectangular',
-  fontSize: {
-    from: 0.1,
-    to: 0.02
-  }
-});
+      var texts = "";
+      everything.top(Infinity).filter(function(d) {
+        return texts += (" " + d.tags);
+      });
 
-dc.renderAll();
+      var frequencyList = null;
+      frequencyList = wordFrequency(texts, 1);
+
+      $("#cloud").jQCloud(frequencyList, {
+        colors: colorscheme,
+        autoResize: true,
+        delay: 5,
+        shape: 'rectangular',
+        fontSize: {
+          from: 0.1,
+          to: 0.02
+        }
+      });
 
 
-});
+
+      dateChart.on('filtered', function(chart, filter) {
+
+        var texts = "";
+        everything.top(Infinity).filter(function(d) {
+          return texts += (" " + d.tags);
+        });
+
+        frequencyList = wordFrequency(texts, 1);
+        $('#cloud').jQCloud('destroy');
+        $("#cloud").jQCloud(frequencyList, {
+          colors: colorscheme,
+          autoResize: true,
+          // steps: 20,
+          delay: 5,
+          shape: 'rectangular',
+          fontSize: {
+            from: 0.1,
+            to: 0.02
+          }
+        });
+
+        dc.renderAll();
 
 
+      });
 
 
 
@@ -275,7 +280,9 @@ dc.renderAll();
 
 
 
-});
+
+
+    });
     ws.el.addEventListener('ws:slide-change', function() {
       crtDiv = $(".current div");
       if (crtDiv.attr("id") === "") {

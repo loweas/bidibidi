@@ -75,7 +75,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="js/webslides.min.js"></script>
   <script src="js/jqcloud.js"></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
@@ -92,10 +93,6 @@
 
 
 <body>
-  <!--Scenes:
-    <!--1. Movie of Bidi-->
-  <!--2. Fly to Uganda with info Panel-->
-  <!--. bidibidi tags-->
 
 
   <article id="webslides">
@@ -127,7 +124,7 @@
       <div id="mymap3"></div>
       <div class="wrap">
         <div class="content-left">
-          <div id="area"> Migration to the camps</div>
+          <div id="chart"> Migration to the camps</div>
         </div>
       </div>
 
@@ -185,9 +182,6 @@
     }).addTo(map);
 
 
-
-
-
     var map2 = L.map("mymap2", {
       zoomControl: false,
       scrollWheelZoom: false
@@ -211,7 +205,6 @@
             return {
               color: "#00FF2A"
             };
-
         }
       }
     }).addTo(map2);
@@ -234,13 +227,11 @@
       zoomControl: false,
       scrollWheelZoom: false
     }).setView([3.3894481, 31.8365927], 7);
-
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 19
     }).addTo(map3);
-
     L.geoJson.ajax("assets/southanduga.geojson", {
 
       style: function(feature) {
@@ -249,11 +240,9 @@
             return {
               color: "#00FF2A"
             };
-
         }
       }
     }).addTo(map3);
-
     L.geoJson.ajax("assets/settlements.json", {
       onEachFeature: function(feature, layer) {
         layer.bindTooltip(feature.properties.name, {
@@ -267,11 +256,12 @@
             return {
               color: "#FF00F6"
             };
-
         }
       }
     }).addTo(map3);
 
+
+    var api = 'https://data2.unhcr.org/api/population/get/timeseries?widget_id=84726&geo_id=220&sv_id=5&population_group=5071&frequency=day&fromDate=1900-01-01';
 
 
 
@@ -307,13 +297,19 @@
 
         });
 
+
+
+
       } else if (crtDiv.attr("id") === "mymap3") {
-        map3.invalidateSize();
+        map2.invalidateSize();
         //Fly to a new location.
-        map3.flyTo([3.3894481, 31.8365927], 8, {
+        map2.flyTo([3.3894481, 31.8365927], 8, {
           animate: true,
           duration: 23
         });
+
+      } else if (crtDiv.attr("id") === "mypop") {
+
 
       }
 
