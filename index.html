@@ -9,6 +9,7 @@
   <meta name="description" content="Bidibidi Refugee Settlement">
   <link rel="stylesheet" type='text/css' media='all' href="css/webslides.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/style_owen.css"> <!--owens css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
@@ -143,6 +144,7 @@ h4 {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
   <script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
   <script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
+  <script src="js/leaflet-side-by-side.js"></script> <!--for the slide on satellite-->
 
 
 </head>
@@ -187,7 +189,18 @@ h4 {
         </div>
       </div>
     </section>
-
+    <!--satellite comparison 1-->
+    <section class="bg-black">
+      <div id="mysatellitemap"></div>
+      <!-- <div class="content-left"> <h1>2016</h1> </div>
+      <div class="content-right"> <h1>2018</h1> </div> -->
+    </section>
+    <!--satellite comparison 2-->
+    <section class="bg-black">
+      <div id="mysatellitemap2"></div>
+        <!-- <div class="content-left"> <h1>2016</h1> </div> -->
+    </section>
+    <!-- <script src="js/main_owen.js"></script> -->
 
 
 
@@ -381,7 +394,29 @@ h4 {
       });
     });
 
+    //start code for satellite imagery
+    var satelliteMap = L.map("mysatellitemap", {
+      zoomControl: false,
+      scrollWheelZoom: false
+    }).setView([3.5199, 31.3300], 16);
 
+    var satelliteMap2 = L.map("mysatellitemap2", {
+      zoomControl: false,
+      scrollWheelZoom: false
+    }).setView([3.4667, 31.3743], 15);
+
+    var presentTile = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom: 19});
+    var presentTile2 = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom: 19});
+    var pastTile = L.tileLayer('https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/29387/{z}/{y}/{x}', {maxZoom: 19});
+    var pastTile2 = L.tileLayer('https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/29387/{z}/{y}/{x}', {maxZoom: 19});
+    pastTile.addTo(satelliteMap);
+    pastTile2.addTo(satelliteMap2);
+    presentTile.addTo(satelliteMap);
+    presentTile2.addTo(satelliteMap2);
+
+    L.control.sideBySide(pastTile, presentTile).addTo(satelliteMap);
+    L.control.sideBySide(pastTile2, presentTile2).addTo(satelliteMap2);
+    //end code for satellite imagery
 
     ws = new WebSlides();
     ws.el.addEventListener('ws:slide-change', function() {
@@ -427,8 +462,21 @@ h4 {
 
       } else if (crtDiv.attr("id") === "mypop") {
 
-
+      //new slide adjust for satellite 1 and 2
+      }else if(crtDiv.attr("id") === "mysatellitemap"){
+        satelliteMap.invalidateSize();
+        satelliteMap.fitBounds([
+          [3.5288, 31.3403],
+          [3.5137, 31.3130]
+        ]);
+      }else if(crtDiv.attr("id") === "mysatellitemap2"){
+        satelliteMap2.invalidateSize();
+        satelliteMap2.fitBounds([
+          [3.4503, 31.3421],
+          [3.4843, 31.4071]
+        ]);
       }
+      //end slide adjust for satellite 1 and 2
 
 
 
