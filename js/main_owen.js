@@ -11,38 +11,16 @@ var map2 = L.map("mymap2", {
 }).setView([3.4667, 31.3743], 15);
 
 var presentTile = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom: 19});
+var presentTile2 = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom: 19});
 var pastTile = L.tileLayer('https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/29387/{z}/{y}/{x}', {maxZoom: 19});
+var pastTile2 = L.tileLayer('https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/29387/{z}/{y}/{x}', {maxZoom: 19});
 pastTile.addTo(map);
-pastTile.addTo(map2);
+pastTile2.addTo(map2);
+presentTile.addTo(map);
+presentTile2.addTo(map2);
 
-var tog = 0;
-var tog2 = 0;
-
-// $("#toggle").click(function(){
-//   if(tog == 0){
-//     tog = 1;
-//     map.removeLayer(pastTile);
-//     presentTile.addTo(map);
-//   }else if(tog == 1){
-//     tog = 0;
-//     map.removeLayer(presentTile);
-//     pastTile.addTo(map);
-//   }
-// });
-//
-// $("#toggle2").click(function(){
-//   if(tog2 == 0){
-//     tog2 = 1;
-//     map2.removeLayer(pastTile);
-//     presentTile.addTo(map2);
-//     map.invalidateSize();
-//   }else if(tog2 == 1){
-//     tog2 = 0;
-//     map2.removeLayer(presentTile);
-//     pastTile.addTo(map2);
-//     map.invalidateSize();
-//   }
-// });
+L.control.sideBySide(pastTile, presentTile).addTo(map);
+L.control.sideBySide(pastTile2, presentTile2).addTo(map2);
 
 ws.el.addEventListener('ws:slide-change', function(){
   crtDiv = $(".current div");
