@@ -228,13 +228,16 @@
 
 
 <body>
-
+<!-- 1. Movie of Bidi-->
   <article id="webslides">
     <section class="bg-apple">
       <video class="background-video" autoplay muted loop>
-        <source src="assets/bidibidi.mp4" type="video/mp4">
+        <source src="assets/bidibidi1.mp4" type="video/mp4">
       </video>
       <div class="wrap aligncenter">
+        <h1>
+Exploring Bidibidi Refugee Settlement
+</h1>
       </div>
     </section>
     <section class="fullscreen">
@@ -245,18 +248,18 @@
         </div>
       </div>
     </section>
-
+<!-- 2. Start of the Conflict-->
     <section class="fullscreen">
       <div id="mymap"></div>
-      <div class="wrap">
-        <div class="flex-content content-right" style="background: white">
+      <div class="card-50">
+        <div class="flex-content" style="background: white">
           <h2>Conflict in Juba</h2>
           <p>After the conflict in July 2016 in Juba, migration to Uganda grow expontentially. The majority of the refugees moved to the northern area, though some migrated further south.</p>
           <div id="chart"></div>
         </div>
       </div>
     </section>
-
+<!-- 3. Migration Pattern-->
     <section class="fullscreen">
       <div class="card-50">
         <figure>
@@ -270,7 +273,7 @@
         </div>
       </div>
     </section>
-    <!--satellite comparison 1-->
+    <!-- 4. satellite comparison 1-->
     <section class="bg-black slide-top">
       <div class="wrap">
         <div id="mysatellitemap"></div>
@@ -285,7 +288,7 @@
         </div>
       </div>
     </section>
-    <!--satellite comparison 2-->
+    <!--5. satellite comparison 2-->
     <section class="bg-black slide-top">
       <div class="wrap">
         <div id="mysatellitemap2"></div>
@@ -300,17 +303,15 @@
         </div>
       </div>
     </section>
-    <!-- <script src="js/main_owen.js"></script> -->
-
+<!-- 6. Intro To Icon map-->
     <section class="slide-top">
       <div id="mymap3"></div>
       <div id="area">
         <h2>Bidibidi Refugee Settlement</h2>
-        <h5> The landscape has drastically changed over the last few years. <br>Amenties are increasingly becoming available. <br>Bidibidi was a small village prior to 2016 and is now a growing into a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a> </h5>
+        <h5> Bidibidi was a small village prior to 2016 and is now a growing into a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a> <br><br> The landscape has drastically changed over the last few years. <br> <br> Amenties are increasingly becoming available. </h5>
       </div>
-
     </section>
-
+<!-- 7. Icon Map-->
     <section class="fullscreen">
       <div class="wrap">
         <div class="card-50 bg-white">
@@ -329,11 +330,70 @@
           </div>
         </div>
       </div>
-      <!-- end .grid-->
-
-
     </section>
 
+      <section class="fullscreen">
+        <div class="card-60">
+          <figure>
+            <img src="https://scontent-sea1-1.cdninstagram.com/vp/214068bc6b599fb0cc1e956b68ef3265/5D37960C/t51.2885-15/e35/22351698_1157608411038733_1516996205727449088_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com" alt="nategeo">
+
+          </figure>
+          <div class="flex-content" style="background: white">
+            <h3>Thank You for Viewing</h3>
+          </div>
+        </div>
+      </section>
+    <section>
+        <div class="wrap">
+          <h2>Team Members</h2>
+          <ul class="flexblock clients border">
+            <li>
+              <a href="https://github.com/loweas" title="Ashley Lowe">
+                <figure>
+                  <img src="https://avatars2.githubusercontent.com/u/46502352?s=400&u=a0755d42eaec0f2b33e7dcf2a42d469b55140479&v=4" alt="ashley">
+                <figcaption>
+                    <h3>Team Lead</h3>
+                    <p> OSU Grad Student in Applied Economics</p>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/MarkleyO" title="Owen">
+                <figure>
+                  <img src="" alt="">
+                  <figcaption>
+                    <h3>Owen</h3>
+                    <p></p>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/mdbrawner" title="Paul">
+                <figure>
+                  <img src="#" alt="">
+                <figcaption>
+                    <h3>Paul</h3>
+                    <p></p>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/jakobzhao" title="Bo Zhao">
+                <figure>
+                  <img src="https://avatars3.githubusercontent.com/u/134784?s=400&v=4" alt="Bo">
+                  <figcaption>
+                    <h3>bo Zhao</h3>
+                    <p>Prof. Humanistic GIS</p>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
   </article>
 
 
@@ -342,7 +402,7 @@
     var map = L.map("mymap", {
       zoomControl: false,
       scrollWheelZoom: false
-    }).setView([3.1894481, 33.8365927], 7);
+    }).setView([2.1894481, 28.8365927], 7);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
