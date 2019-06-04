@@ -340,6 +340,10 @@ Exploring Bidibidi Refugee Settlement
           </figure>
           <div class="flex-content" style="background: white">
             <h3>Thank You for Viewing</h3>
+            <p>Currently, the most liked photo on <a href="https://www.instagram.com/p/BaIyhXCDrH-/">Instagram</a> at the geotagged location Bidibidi Refugee Settlement</p><br><br>
+              <span>
+            <img src="img/arrow.svg" alt="arrow">
+          </span>
           </div>
         </div>
       </section>
@@ -627,10 +631,17 @@ Exploring Bidibidi Refugee Settlement
     };
 
     var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+    var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+});
 
     var baseMaps = {
       'Grey Scale': map3,
+      'No Labels': CartoDB_PositronNoLabels,
       'Satellite': satellite
+
     };
 
 
