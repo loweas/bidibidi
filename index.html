@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -9,196 +9,15 @@
   <meta name="description" content="Bidibidi Refugee Settlement">
   <link rel="stylesheet" type='text/css' media='all' href="css/webslides.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="css/style_owen.css">
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="css/style_owen.css"> -->
   <!--owens css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
   <link rel="stylesheet" href="https://dc-js.github.io/dc.js/css/dc.min.css">
   <link rel="stylesheet" href="css/jqcloud.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Julius+Sans+One|Montserrat|Open+Sans&display=swap" rel="stylesheet">
-  <style>
-    #area {
-      line-height: 12px;
-      width: 280px;
-      position: absolute;
-      z-index: 1000;
-      left: 10px;
-      top: 0px;
-      color: white;
-      font-family: 'Alegreya Sans SC', sans-serif;
-      padding: 6px 8px;
-      background: #000000;
-      background: rgba(38, 38, 38, 0.5);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-    }
-
-    #area i {
-      width: 25px;
-      height: 16px;
-      float: left;
-      /* margin-right: 8px; */
-      opacity: 0.7;
-    }
-
-    #area p {
-      font-size: 12px;
-      line-height: 16px;
-      margin: 0;
-    }
-
-    a:link {
-      color: black;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: orange;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: black;
-      background-color: transparent;
-      text-decoration: underline;
-    }
-
-    a:active {
-      color: pink;
-      background-color: transparent;
-      text-decoration: underline;
-    }
-
-    #info {
-      position: fixed;
-      z-index: 1000;
-      top: 1px;
-      right: 1px;
-      width: 300px;
-      color: white;
-      padding: 6px 8px;
-      background: transparent;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-      font-family: 'Alegreya Sans SC', sans-serif;
-    }
-
-    #chart {
-      position: fixed;
-      font-family: 'Alegreya Sans SC', sans-serif;
-    }
-
-    .info {
-      padding: 6px 8px;
-      font: 12px/14px;
-      font-family: 'Alegreya Sans SC', sans-serif;
-      background: white;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-    }
-
-    #info1 {
-      position: fixed;
-      z-index: 1000;
-      bottom: 0px;
-      right: 0px;
-      width: 300px;
-      color: white;
-      padding: 6px 8px;
-      background: black;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-      font-family: 'Alegreya Sans SC', sans-serif;
-    }
-
-    .info1 {
-      padding: 6px 8px;
-      font: 12px/14px;
-      font-family: 'Alegreya Sans SC', sans-serif;
-      background: white;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-    }
-
-    h4 {
-      font-family: 'Alegreya Sans SC', sans-serif;
-      margin: 0 0 5px;
-      color: #065581;
-      font-size: 14px;
-    }
-
-    p {
-      font-family: 'Alegreya Sans SC', sans-serif;
-      margin: 0 0 5px;
-      color: #065581;
-      font-size: 20px;
-    }
-
-    .info h4 {
-      font-family: 'Alegreya Sans SC', sans-serif;
-      margin: 0 0 5px;
-      color: #065581;
-      font-size: 14px;
-    }
-
-    #chartword {
-      position: absolute;
-      left: 0;
-      top: 20%;
-      width: 100%;
-      font-family: 'Alegreya Sans SC', sans-serif;
-      color: white;
-      stroke-width: 3px;
-
-    }
-
-    #info2 {
-      position: absolute;
-      z-index: 1000;
-      bottom: 20px;
-      right: 0px;
-      width: 100%;
-      color: black;
-      padding: 6px 8px;
-      background: #EAEDED;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      font-family: 'Alegreya Sans SC', sans-serif;
-    }
-
-    #cloud {
-      font-family: 'Alegreya Sans SC', sans-serif;
-      text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-      background: #EAEDED;
-    }
-
-    #upper_panel {
-      position: absolute;
-      z-index: 1010;
-      left: 30px;
-      top: 80px;
-      /* width: 268px; */
-    }
-
-    .leaflet-control-layers,
-    .leaflet-control-zoom {
-      color: #333333 !important;
-      padding: 6px 8px;
-      border: none !important;
-      background: rgba(225, 225, 225, 0.5) !important;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2) !important;
-      border-radius: 5px !important;
-
-    }
-
-    .leaflet-control-layers {
-      width: 220px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
   <link rel="shortcut icon" href="img/uganda.ico" type="image/x-icon">
 
   <!-- Javascript Library -->
@@ -206,17 +25,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="js/webslides.min.js"></script>
   <script src="js/jqcloud.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
   <script type="text/javascript" src="js/chroma.js"></script>
   <script src="https://unpkg.com/leaflet-swoopy"></script>
-  <script src="http://maximeh.github.io/leaflet.bouncemarker/bouncemarker.js"></script>
+  <!-- <script src="http://maximeh.github.io/leaflet.bouncemarker/bouncemarker.js"></script> -->
   <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
   <script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
   <script src="js/leaflet-side-by-side.js"></script>
@@ -225,10 +43,8 @@
 
 </head>
 
-
-
 <body>
-<!-- 1. Movie of Bidi-->
+  <!-- 1. Movie of Bidi-->
   <article id="webslides">
     <section class="bg-apple">
       <video class="background-video" autoplay muted loop>
@@ -236,10 +52,11 @@
       </video>
       <div class="wrap aligncenter">
         <h1>
-Exploring Bidibidi Refugee Settlement
-</h1>
+          Exploring Bidibidi Refugee Settlement
+        </h1>
       </div>
     </section>
+      <!-- 2. Start of the Conflict-->
     <section class="fullscreen">
       <div class="card-60">
         <figure id="mymap2"></figure>
@@ -248,7 +65,7 @@ Exploring Bidibidi Refugee Settlement
         </div>
       </div>
     </section>
-<!-- 2. Start of the Conflict-->
+    <!-- 3. Start of the Conflict-->
     <section class="fullscreen">
       <div id="mymap"></div>
       <div class="card-50">
@@ -259,7 +76,7 @@ Exploring Bidibidi Refugee Settlement
         </div>
       </div>
     </section>
-<!-- 3. Migration Pattern-->
+    <!-- 3. Migration Pattern-->
     <section class="fullscreen">
       <div class="card-50">
         <figure>
@@ -303,15 +120,16 @@ Exploring Bidibidi Refugee Settlement
         </div>
       </div>
     </section>
-<!-- 6. Intro To Icon map-->
+    <!-- 6. Intro To Icon map-->
     <section class="slide-top">
       <div id="mymap3"></div>
       <div id="area">
         <h2>Bidibidi Refugee Settlement</h2>
-        <h5> Bidibidi was a small village prior to 2016 and is now a growing into a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a> <br><br> The landscape has drastically changed over the last few years. <br> <br> Amenties are increasingly becoming available. </h5>
+        <h5> Bidibidi was a small village prior to 2016 and is now a growing into a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a> <br><br> The landscape has drastically changed
+          over the last few years. <br> <br> Amenties are increasingly becoming available. </h5>
       </div>
     </section>
-<!-- 7. Icon Map-->
+    <!-- 7. Icon Map-->
     <section class="fullscreen">
       <div class="wrap">
         <div class="card-50 bg-white">
@@ -332,77 +150,79 @@ Exploring Bidibidi Refugee Settlement
       </div>
     </section>
 
-      <section class="fullscreen">
-        <div class="card-60">
-          <figure>
-            <img src="https://scontent-sea1-1.cdninstagram.com/vp/214068bc6b599fb0cc1e956b68ef3265/5D37960C/t51.2885-15/e35/22351698_1157608411038733_1516996205727449088_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com" alt="nategeo">
+    <section class="fullscreen">
+      <div class="card-60">
+        <figure>
+          <img src="https://scontent-sea1-1.cdninstagram.com/vp/214068bc6b599fb0cc1e956b68ef3265/5D37960C/t51.2885-15/e35/22351698_1157608411038733_1516996205727449088_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com" alt="nategeo">
 
-          </figure>
-          <div class="flex-content" style="background: white">
-            <h3>Thank You for Viewing</h3>
-            <p>Currently, the most liked photo on <a href="https://www.instagram.com/p/BaIyhXCDrH-/">Instagram</a> at the geotagged location Bidibidi Refugee Settlement</p><br><br>
-              <span>
+        </figure>
+        <div class="flex-content" style="background: white">
+          <h3>Thank You for Viewing</h3>
+          <p>Currently, the most liked photo on <a href="https://www.instagram.com/p/BaIyhXCDrH-/">Instagram</a> at the geotagged location Bidibidi Refugee Settlement</p><br><br>
+          <span>
             <img src="img/arrow.svg" alt="arrow">
           </span>
-          </div>
         </div>
-      </section>
+      </div>
+    </section>
     <section>
-        <div class="wrap">
-          <h2>Team Members</h2>
-          <ul class="flexblock clients border">
-            <li>
-              <a href="https://github.com/loweas" title="Ashley Lowe">
-                <figure>
-                  <img src="https://avatars2.githubusercontent.com/u/46502352?s=400&u=a0755d42eaec0f2b33e7dcf2a42d469b55140479&v=4" alt="ashley">
+      <div class="wrap">
+        <h2>Team Members</h2>
+        <ul class="flexblock clients border">
+          <li>
+            <a href="https://github.com/loweas" title="Ashley Lowe">
+              <figure>
+                <img src="https://avatars2.githubusercontent.com/u/46502352?s=400&u=a0755d42eaec0f2b33e7dcf2a42d469b55140479&v=4" alt="ashley">
                 <figcaption>
-                    <h3>Team Lead</h3>
-                    <p> OSU Grad Student in Applied Economics</p>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/MarkleyO" title="Owen">
-                <figure>
-                  <img src="" alt="">
-                  <figcaption>
-                    <h3>Owen</h3>
-                    <p></p>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/mdbrawner" title="Paul">
-                <figure>
-                  <img src="#" alt="">
+                  <h3>Team Lead</h3>
+                  <p> OSU Grad Student in Applied Economics</p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/MarkleyO" title="Owen">
+              <figure>
+                <img src="" alt="">
                 <figcaption>
-                    <h3>Paul</h3>
-                    <p></p>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/jakobzhao" title="Bo Zhao">
-                <figure>
-                  <img src="https://avatars3.githubusercontent.com/u/134784?s=400&v=4" alt="Bo">
-                  <figcaption>
-                    <h3>bo Zhao</h3>
-                    <p>Prof. Humanistic GIS</p>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+                  <h3>Owen</h3>
+                  <p></p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/mdbrawner" title="Paul">
+              <figure>
+                <img src="#" alt="">
+                <figcaption>
+                  <h3>Paul</h3>
+                  <p></p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/jakobzhao" title="Bo Zhao">
+              <figure>
+                <img src="https://avatars3.githubusercontent.com/u/134784?s=400&v=4" alt="Bo">
+                <figcaption>
+                  <h3>bo Zhao</h3>
+                  <p>Prof. Humanistic GIS</p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
   </article>
 
 
-
   <script>
+
+  var chart, timer;
+
     var map = L.map("mymap", {
       zoomControl: false,
       scrollWheelZoom: false
@@ -443,8 +263,6 @@ Exploring Bidibidi Refugee Settlement
         }
       }
     }).addTo(map);
-
-
 
 
     var map2 = L.map("mymap2", {
@@ -525,6 +343,8 @@ Exploring Bidibidi Refugee Settlement
         }
       }
     }).addTo(map3);
+
+
     var colors = chroma.scale('Dark2').mode('lch').colors(10);
     for (i = 1; i < 11; i++) {
       $('html > head').append($("<style> .marker-icon-" + i.toString() + " { color: " + colors[i] + "; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
@@ -547,6 +367,8 @@ Exploring Bidibidi Refugee Settlement
         });
       }
     });
+
+
     var education = L.geoJson.ajax('assets/education.geojson', {
       pointToLayer: function(feature, latlng) {
         return L.marker(latlng, {
@@ -622,6 +444,8 @@ Exploring Bidibidi Refugee Settlement
         });
       }
     });
+
+    
     var overlays = {
       "Health Centers": health,
       "Schools": education,
@@ -632,10 +456,10 @@ Exploring Bidibidi Refugee Settlement
 
     var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
     var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-	maxZoom: 19
-});
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    });
 
     var baseMaps = {
       'Grey Scale': map3,
@@ -662,7 +486,7 @@ Exploring Bidibidi Refugee Settlement
         Migrate_Population.push(+d["Migrate_Population"]);
       });
 
-      var chart = c3.generate({
+      chart = c3.generate({
         bindto: "#chart",
         title: {
           text: 'Migration from South Sudan'
@@ -870,30 +694,62 @@ Exploring Bidibidi Refugee Settlement
       crtDiv = $(".current div");
       //Map 1 'flyto' animation location and function
       if (crtDiv.attr("id") === "mymap") {
+
+        timer = setInterval(function() {}, 1000);
+        clearInterval(timer);
+
         $.getJSON("assets/migration.geojson", function(migration) {
 
 
-          for (let i = 0; i < migration.features.length; i++) {
+       for (let i = 0; i < migration.features.length; i++) {
 
-            setTimeout(function() {
-              lng = migration.features[i].geometry.coordinates[0];
-              lat = migration.features[i].geometry.coordinates[1];
 
-              L.swoopyArrow([4.85, 31.6], [lat, lng], {
-                labelFontSize: 12,
-                iconAnchor: [20, 10],
-                iconSize: [30, 16],
-                color: '#FF00F6',
-                opacity: 0.7,
-                weight: '2'
-              }).addTo(map);
-              // layergroup2.addLayer( L.marker([lat, lng], {icon: pwbIcon}));
+            timer = setInterval(function() {
 
-            }, 400 * i);
-          }
+
+              L.swoopyArrow([4.85, 31.6], [migration.features[i].geometry.coordinates[1], migration.features[i].geometry.coordinates[0]], {
+                  labelFontSize: 12,
+                  iconAnchor: [20, 10],
+                  iconSize: [30, 16],
+                  color: '#FF00F6',
+                  opacity: 0.7,
+                  weight: '2'
+                }).addTo(map);
+
+
+
+            },200);
+
+
+
+            // setTimeout(function() {
+            //   lng = migration.features[i].geometry.coordinates[0];
+            //   lat = migration.features[i].geometry.coordinates[1];
+            //
+            //   L.swoopyArrow([4.85, 31.6], [lat, lng], {
+            //     labelFontSize: 12,
+            //     iconAnchor: [20, 10],
+            //     iconSize: [30, 16],
+            //     color: '#FF00F6',
+            //     opacity: 0.7,
+            //     weight: '2'
+            //   }).addTo(map);
+            //   // layergroup2.addLayer( L.marker([lat, lng], {icon: pwbIcon}));
+            //
+            // }, 400 * i);
+
+
+
+
+
+
+       }
 
 
         });
+
+
+        chart.resize();
 
 
 
