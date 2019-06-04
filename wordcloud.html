@@ -43,7 +43,7 @@
 
     #chart {
       font-size: 20px;
-      font-family: Wendy One;
+      font-family: 'Alegreya Sans SC', sans-serif;
       color: white
     }
 
@@ -55,7 +55,7 @@
       left: 200px;
       top: 100px;
       color: #a0a0a0;
-      font-family: Wendy One;
+      ffont-family: 'Alegreya Sans SC', sans-serif;
       padding: 6px 8px;
       background: #000000;
       background: rgba(38, 38, 38, 0.5);
@@ -192,7 +192,7 @@
 
 
     colorscheme = chroma.scale('Dark2').colors(10).reverse();
-    d3.csv('assets/brs75.csv').then(function(data) {
+    d3.csv('assets/locationbidiall.csv').then(function(data) {
 
 
       var filter = crossfilter(data);
@@ -223,17 +223,13 @@
 
       dc.renderAll();
 
-      // for (var j = 0; j < colorscheme.length; j++) {
-      //   $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
-      //
-
       var texts = "";
       everything.top(Infinity).filter(function(d) {
         return texts += (" " + d.tags);
       });
 
       var frequencyList = null;
-      frequencyList = wordFrequency(texts, 1);
+      frequencyList = wordFrequency(texts, 5);
 
       $("#cloud").jQCloud(frequencyList, {
         colors: colorscheme,
@@ -255,7 +251,7 @@
           return texts += (" " + d.tags);
         });
 
-        frequencyList = wordFrequency(texts, 1);
+        frequencyList = wordFrequency(texts, 2);
         $('#cloud').jQCloud('destroy');
         $("#cloud").jQCloud(frequencyList, {
           colors: colorscheme,

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "mobilemoney",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": "5566723182", "addr_distr": "Yumbe", "addr_subco": "Odravu", "addr_paris": "Lui", "addr_settl": null, "addr_place": null, "addr_villa": "Kiyi", "addr_point": null, "addr_zone": null, "addr_block": null, "start_date": "01\/07\/2015", "amenity": "mobile_money_agent", "network": "mtn", "name": "Blessed Mobile Solutions Limited", "opening_ho": "Mo-Su 09:00-17:00" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 31.214345, 3.342565 ] ] } },
+{ "type": "Feature", "properties": { "osm_id": "5566724205", "addr_distr": "Yumbe", "addr_subco": null, "addr_paris": null, "addr_settl": "Bidibidi", "addr_place": null, "addr_villa": null, "addr_point": null, "addr_zone": null, "addr_block": "Kiranga", "start_date": "01\/04\/2017", "amenity": "mobile_money_agent", "network": "mtn", "name": "Namataba", "opening_ho": null }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 31.3903888, 3.2486406 ] ] } },
+{ "type": "Feature", "properties": { "osm_id": "5566724628", "addr_distr": "Yumbe", "addr_subco": "Odravu", "addr_paris": "Oluba", "addr_settl": null, "addr_place": null, "addr_villa": "Kulikulinga", "addr_point": null, "addr_zone": null, "addr_block": null, "start_date": "01\/04\/2017", "amenity": "mobile_money_agent", "network": "airtel", "name": "Awuzu Nilecom", "opening_ho": null }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 31.2510112, 3.3503957 ] ] } }
+]
+}

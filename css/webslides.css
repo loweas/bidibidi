@@ -487,7 +487,7 @@ figure.alignleft {
 
 pre,
 code {
-  font-family: 'Cousine', monospace; }
+  font-family: 'Alegreya Sans SC', sans-serif; }
 
 pre {
   font-size: 1.6rem;
@@ -794,8 +794,9 @@ body,
 input,
 select,
 textarea {
-  font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+  font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 62.5%; }
+
 
 body,
 textarea {
@@ -1070,7 +1071,7 @@ h3 [class*='bg-'] {
 /* -- Serif -- */
 .text-serif,
 h1 span {
-  font-family: 'Maitree', times, serif; }
+  font-family: 'Alegreya Sans SC', sans-serif; }
 
 /* -- h1,h2... Promo/Landings -- */
 .text-landing {
@@ -1244,29 +1245,29 @@ figure[class*='text-pull-'] {
 =========================================== */
 .text-apple,
 .bg-apple {
-  font-family: 'San Francisco', helvetica, arial, sans-serif; }
+  font-family: 'Alegreya Sans SC', sans-serif; }
 
 /* Ultra Light */
 @font-face {
-  font-family: 'San Francisco';
+  font-family: 'Alegreya Sans SC', sans-serif;
   font-weight: 100;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2"); }
 
 /* Thin */
 @font-face {
-  font-family: 'San Francisco';
+  font-family: 'Alegreya Sans SC', sans-serif;
   font-weight: 200;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2"); }
 
 /* Regular */
 @font-face {
-  font-family: 'San Francisco';
+  font-family: 'Alegreya Sans SC', sans-serif;
   font-weight: 400;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2"); }
 
 /* Bold */
 @font-face {
-  font-family: 'San Francisco';
+  font-family: 'Alegreya Sans SC', sans-serif;
   font-weight: bold;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2"); }
 
@@ -1609,7 +1610,7 @@ form[class*='bg-'] {
   left: 0;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0;
+  opacity: 1;
   position: fixed;
   right: 0;
   width: 24.4rem;
@@ -2563,7 +2564,7 @@ cite span {
   .text-quote:before,
   .wall:before {
     content: '\201C';
-    font-family: arial, sans-serif;
+    font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 12rem;
     height: 5.6rem;
     left: -.8rem;
