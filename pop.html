@@ -27,7 +27,6 @@
   <script src="js/webslides.min.js"></script>
   <script src="js/jqcloud.js"></script>
   <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-  </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
@@ -113,6 +112,19 @@
       }
     }).addTo(map);
 
+
+    Promise.all([
+      d3.json('poparea.geojson')
+    ]).then(function(data) {
+      var data__individuals = ["data__individuals"];
+
+
+      data[0].forEach(function(d) {
+        data__individuals.push(+d["data__individuals"]);
+
+      });
+});
+
     ws = new WebSlides();
     ws.el.addEventListener('ws:slide-change', function() {
 
@@ -173,8 +185,13 @@
 
         });
 
-      }
 
+        chart.resize();
+
+
+
+
+      }
     });
   </script>
 </body>

@@ -132,18 +132,12 @@ a:active {
   border-radius: 5px;
 } */
 
-h4 {
-  font-family: 'Alegreya Sans SC', sans-serif;
-  margin: 0 0 5px;
-  color: #065581;
-  font-size: 14px;
-}
 
 p {
   font-family: 'Alegreya Sans SC', sans-serif;
   margin: 0 0 5px;
   color: #065581;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* .info h4 {
