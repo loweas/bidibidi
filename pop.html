@@ -1,34 +1,182 @@
-Promise.all([
-  d3.csv('assets/poparea.csv')
-]).then(function(data) {
-  var data__individuals= ["data__individuals"]
-  var data__centroid_lat=["data__centroid_lat"]
-  var data__centroid_lon=["data__centroid_lat"]
 
-  data[0].forEach(function(d) {
-    data__individuals.push(+d["data__individuals"]);
-    data__centroid_lat.push(+d["data__centroid_lat"]);
-    data__centroid_lon.push(+d["data__centroid_lon"]);
-  });
+<!doctype html>
+<html lang="en">
 
-    var color = d3.scaleOrdinal()
-      .domain(["A", "B", "C" ])
-      .range([ "#402D54", "#D18975", "#8FD175"])
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bidibidi Refugee Settlement</title>
+  <meta name="description" content="Bidibidi Refugee Settlement">
+  <link rel="stylesheet" type='text/css' media='all' href="css/webslides.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="css/style_owen.css"> -->
+  <!--owens css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://dc-js.github.io/dc.js/css/dc.min.css">
+  <link rel="stylesheet" href="css/jqcloud.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Julius+Sans+One|Montserrat|Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+  <link rel="shortcut icon" href="img/uganda.ico" type="image/x-icon">
+
+  <!-- Javascript Library -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="js/webslides.min.js"></script>
+  <script src="js/jqcloud.js"></script>
+  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+  <script type="text/javascript" src="js/chroma.js"></script>
+  <script src="https://unpkg.com/leaflet-swoopy"></script>
+  <!-- <script src="http://maximeh.github.io/leaflet.bouncemarker/bouncemarker.js"></script> -->
+  <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
+  <script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
+  <script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
+  <script src="js/leaflet-side-by-side.js"></script>
+  <!--for the slide on satellite-->
+  <script src="js/BubbleLayer.js"></script>
+
+</head>
+
+<body>
+  <!-- 1. Movie of Bidi-->
+  <article id="webslides">
+    <section class="bg-apple">
+      <video class="background-video" autoplay muted loop>
+        <source src="assets/bidibidi1.mp4" type="video/mp4">
+      </video>
+      <div class="wrap aligncenter">
+        <h1>
+          Exploring Bidibidi Refugee Settlement
+        </h1>
+      </div>
+    </section>
+    <!-- 2. Start of the Conflict-->
+    <section class="fullscreen">
+      <div id="mymap"></div>
+      <div class="card-50">
+        <div class="flex-content" style="background: white">
+          <h2>Conflict in Juba</h2>
+          <p>After the conflict in July 2016 in Juba, migration to Uganda grow expontentially. The majority of the refugees moved to the northern area, though some migrated further south.</p>
+          <div id="chart"></div>
+        </div>
+      </div>
+    </section>
+  </article>
 
 
-    // Add a scale for bubble size
-    var size = d3.scaleLinear()
-      .domain([1,100])  // What's in the data
-      .range([ 4, 50])  // Size in pixel
+  <script>
+    var map = L.map("mymap", {
+      zoomControl: false,
+      scrollWheelZoom: false
+    }).setView([2.1894481, 28.8365927], 7);
 
-    // Add circles:
-
-      .selectAll("myCircles")
-      .enter()
-      .append("circle")
-        .attr("cx", function(d){ return projection([data__centroid_lon, data__centroid_lat])[0] })
-        .attr("cy", function(d){ return projection([d.longitude, d.longitude])[1] })
-        .attr("r", function(d){ return size(d.size) })
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
 
 
-});
+    L.geoJson.ajax("assets/southanduga.geojson", {
+
+      style: function(feature) {
+        switch (feature.properties.ADM0_EN) {
+          case 'Uganda':
+            return {
+              color: "#00FF2A"
+            };
+        }
+      }
+    }).addTo(map);
+
+    L.geoJson.ajax("assets/settlements.json", {
+      onEachFeature: function(feature, layer) {
+        layer.bindTooltip(feature.properties.name, {
+          sticky: true,
+          className: "feature-tooltip"
+        });
+      },
+      style: function(feature) {
+        switch (feature.properties.name) {
+          case 'Bidi Bidi Refugee Settlement':
+            return {
+              color: "#FF00F6"
+            };
+        }
+      }
+    }).addTo(map);
+
+    ws = new WebSlides();
+    ws.el.addEventListener('ws:slide-change', function() {
+
+      crtDiv = $(".current div");
+      //Map 1 'flyto' animation location and function
+      if (crtDiv.attr("id") === "mymap") {
+
+        timer = setInterval(function() {}, 100);
+        clearInterval(timer);
+
+        $.getJSON("assets/migration.geojson", function(migration) {
+
+
+          for (let i = 0; i < migration.features.length; i++) {
+
+
+            timer = setInterval(function() {
+
+
+              L.swoopyArrow([4.85, 31.6], [migration.features[i].geometry.coordinates[1], migration.features[i].geometry.coordinates[0]], {
+                labelFontSize: 12,
+                iconAnchor: [20, 10],
+                iconSize: [30, 16],
+                color: '#FF00F6',
+                opacity: 0.7,
+                weight: '2'
+              }).addTo(map);
+
+
+
+            }, 200);
+
+
+
+            // setTimeout(function() {
+            //   lng = migration.features[i].geometry.coordinates[0];
+            //   lat = migration.features[i].geometry.coordinates[1];
+            //
+            //   L.swoopyArrow([4.85, 31.6], [lat, lng], {
+            //     labelFontSize: 12,
+            //     iconAnchor: [20, 10],
+            //     iconSize: [30, 16],
+            //     color: '#FF00F6',
+            //     opacity: 0.7,
+            //     weight: '2'
+            //   }).addTo(map);
+            //   // layergroup2.addLayer( L.marker([lat, lng], {icon: pwbIcon}));
+            //
+            // }, 400 * i);
+
+
+
+
+
+
+          }
+
+
+        });
+
+      }
+
+    });
+  </script>
+</body>
+
+</html>
