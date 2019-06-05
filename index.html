@@ -114,7 +114,7 @@
     </section>
     <section class="fullscreen">
       <div id="mymap2"></div>
-      <div class="card-60 ">
+      <div class="card-50 ">
         <div class="flex-content" style="background: white">
           <h1>This is Bidibidi Refugee Settlement <span>
               <img src="img/arrow2.svg" alt="arrow">
@@ -122,8 +122,9 @@
           <p> Bidibidi was a small village prior to 2016.
             It is now a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a>
             <br><br> <a href="https://en.wikipedia.org/wiki/Bidi_Bidi_Refugee_Settlement">Bidibidi Refugee Setttlement</a> was considered the largest refugee settlement in 2017.
-            <br><br> The landscape drastically changed over the last few years with the influx of migration to the area
-            <br> <br> </p>
+            <br><br> The landscape drastically changed over the last few years with the influx of migration to the area.
+
+            <br> <br> There are multiple camps in the region.</p>
           <h2>Next two Slides:</h2>
           <p> Satellite Imagery of different areas in the camp.</p>
         </div>
@@ -239,7 +240,7 @@
           <img src="https://live.staticflickr.com/8105/29673871242_e49753869f_k.jpg" alt="nategeo">
         </figure>
         <div class="flex-content">
-          <h1>Bidibidi Refugee Settlement WordCloud</h1>
+          <h1> Bidibidi WordCloud  </h1> <h2>Textual Visialization</h2>
           <h3>Revealing a Sense of Place</h3>
         </div>
       </div>
@@ -416,7 +417,10 @@
     }).addTo(map2);
     L.geoJson.ajax("assets/settlements.json", {
       onEachFeature: function(feature, layer) {
-
+        layer.bindTooltip(feature.properties.name, {
+          sticky: true,
+          className: "feature-tooltip"
+        });
       },
       style: function(feature) {
         switch (feature.properties.name) {
@@ -431,6 +435,7 @@
       onEachFeature: function(feature, layer) {
         layer.bindTooltip(feature.properties.name, {
           sticky: true,
+          permanent: true,
           className: "feature-tooltip"
         });
       },
@@ -928,24 +933,6 @@
       } else if (crtDiv.attr("id") === "mycloud") {
         dc.renderAll();
 
-        var texts = "";
-        everything.top(Infinity).filter(function(d) {
-          return texts += (" " + d.tags);
-        });
-
-        var frequencyList = null;
-        frequencyList = wordFrequency(texts, 6);
-
-        $("#cloud").jQCloud(frequencyList, {
-          colors: colorscheme,
-          autoResize: true,
-          delay: 5,
-          shape: 'rectangular',
-          fontSize: {
-            from: 0.1,
-            to: 0.02
-          }
-        });
 
 
       }
