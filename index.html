@@ -19,9 +19,7 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Julius+Sans+One|Montserrat|Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
   <link rel="shortcut icon" href="img/uganda.ico" type="image/x-icon">
-  <style>
 
-  </style>
 
   <!-- Javascript Library -->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
@@ -34,7 +32,7 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
   <script type="text/javascript" src="js/chroma.js"></script>
-  <script src="https://unpkg.com/leaflet-swoopy"></script>
+  <script src="js/Leaflet.SwoopyArrow-customized.js"></script>
   <!-- <script src="http://maximeh.github.io/leaflet.bouncemarker/bouncemarker.js"></script> -->
   <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
@@ -79,7 +77,8 @@
       <div class="card-50">
         <div class="flex-content" style="background: white">
           <h3>South Sundanese Civil War</h3>
-          <p> It has been characterized by its large amounts of child soldiers, high rates of sexual violence, and ethnic cleansing between rival ethnic groups, mainly between the Dinkas and the Nuer, even though both political parties have supporters
+          <p> It has been characterized by its large amounts of child soldiers, high rates of sexual violence, and ethnic cleansing between rival ethnic groups, mainly between the Dinkas and the Nuer, even though both political parties have
+            supporters
             from both groups.
             <br><br>An estimated 400,000 people have been killed and forced another 2.5 million people to flee to other countries. </p>
           <!-- A peace deal was signed in September 2018 between the SPLM and the SPLM-IO and pledged to restore peace and stability, as well as rebuild the livelihoods and homes that were destroyed. The peace deal hasn’t yet been deemed a success however, as South Sudan still has a long way to go in repairing it’s fractured government and military.</p> -->
@@ -169,7 +168,7 @@
         <ul class="flexblock features">
           <li>
 
-              <i class="fas fa-clinic-medical fa-4x"></i>
+            <i class="fas fa-clinic-medical fa-4x"></i>
 
             <div>
               <h2>
@@ -181,9 +180,9 @@
           <li>
             <div>
               <i class="fas fa-school fa-4x"></i>
-            <h2>
-              Education :  locations of schools and
-            </h2>
+              <h2>
+                Education : locations of schools and
+              </h2>
             </div>
           </li>
           <li>
@@ -197,7 +196,7 @@
         </ul>
         <ul class="flexblock features">
           <li>
-<img src="img/police1.svg" alt="" style="width:100px;height:90px;">
+            <img src="img/police1.svg" alt="" style="width:100px;height:90px;">
             <div>
 
               <h2>
@@ -210,14 +209,14 @@
             <img src="img/community1.svg" alt="" style="width:100px;height:90px;">
             <div>
 
-            <h2>
-              Communty centers bring individuals together.
-            </h2>
+              <h2>
+                Communty centers bring individuals together.
+              </h2>
             </div>
           </li>
           <li>
             <div>
-<i class="fas fa-money-bill-wave fa-3x"></i>
+              <i class="fas fa-money-bill-wave fa-3x"></i>
               <h2>
 
                 Shopping Centers indicating the growing economic hubs for communities.
@@ -240,7 +239,8 @@
           <img src="https://live.staticflickr.com/8105/29673871242_e49753869f_k.jpg" alt="nategeo">
         </figure>
         <div class="flex-content">
-          <h1> Bidibidi WordCloud  </h1> <h2>Textual Visialization</h2>
+          <h1> Bidibidi WordCloud </h1>
+          <h2>Textual Visialization</h2>
           <h3>Revealing a Sense of Place</h3>
         </div>
       </div>
@@ -337,6 +337,17 @@
   <script>
     var chart, timer;
 
+
+
+
+    var createLabelIcon = function(labelClass, labelText) {
+       return L.divIcon({
+         className: labelClass,
+         html: labelText
+       })
+     }
+
+
     var map = L.map("mymap", {
       zoomControl: false,
       scrollWheelZoom: false
@@ -431,23 +442,25 @@
         }
       }
     }).addTo(map2);
-    L.geoJson.ajax("assets/camps.geojson", {
-      onEachFeature: function(feature, layer) {
-        layer.bindTooltip(feature.properties.name, {
-          sticky: true,
-          permanent: true,
-          className: "feature-tooltip"
-        });
-      },
-      style: function(feature) {
-        return {
-          color: "#d8d815"
-        }
+    // L.geoJson.ajax("assets/camps.geojson", {
+    //   onEachFeature: function(feature, layer) {
+    //     layer.bindTooltip(feature.properties.name, {
+    //       sticky: true,
+    //       permanent: true,
+    //       className: "feature-tooltip"
+    //     });
+    //   },
+    //   style: function(feature) {
+    //     return {
+    //       color: "#d8d815"
+    //     }
+    //
+    //   }
+    // }).addTo(map2);
 
-      }
+    var lable_1080 = L.marker(new L.LatLng(3.2767997, 31.2946834), {
+      icon: createLabelIcon("textLabelclass", "Zone 1")
     }).addTo(map2);
-
-
 
 
     var map3 = L.map("mymap3", {
@@ -470,6 +483,8 @@
         }
       }
     }).addTo(map3);
+
+
     L.geoJson.ajax("assets/camps.geojson", {
       onEachFeature: function(feature, layer) {
         layer.bindPopup(feature.properties.name, {
@@ -768,83 +783,9 @@
 
 
     colorscheme = chroma.scale('Dark2').colors(10).reverse();
-    d3.csv('assets/locationbidiall.csv').then(function(data) {
 
 
-      var filter = crossfilter(data);
-
-      var all = filter.groupAll();
-
-      var everything = filter.dimension(function(d) {
-        return d
-      });
-
-
-      var dateDimension = filter.dimension(function(d) {
-
-        return d.Year;
-      });
-      var dateDimensionGroup = dateDimension.group();
-
-
-      var dateChart = dc.barChart('#chartword');
-      dateChart
-        .dimension(dateDimension)
-        .group(dateDimensionGroup)
-        .elasticY(true)
-        .x(d3.scaleOrdinal()) //
-        .xUnits(dc.units.ordinal)
-        .yAxis()
-        .ticks(3); //timeDate object that has the format for the date
-
-      dc.renderAll();
-
-      var texts = "";
-      everything.top(Infinity).filter(function(d) {
-        return texts += (" " + d.tags);
-      });
-
-      var frequencyList = null;
-      frequencyList = wordFrequency(texts, 6);
-
-      $("#cloud").jQCloud(frequencyList, {
-        colors: colorscheme,
-        autoResize: true,
-        delay: 5,
-        shape: 'rectangular',
-        fontSize: {
-          from: 0.1,
-          to: 0.02
-        }
-      });
-
-
-
-      dateChart.on('filtered', function(chartword, filter) {
-
-        var texts = "";
-        everything.top(Infinity).filter(function(d) {
-          return texts += (" " + d.tags);
-        });
-
-        frequencyList = wordFrequency(texts, 4);
-        $('#cloud').jQCloud('destroy');
-        $("#cloud").jQCloud(frequencyList, {
-          colors: colorscheme,
-          autoResize: true,
-          // steps: 20,
-          delay: 5,
-          shape: 'rectangular',
-          fontSize: {
-            from: 0.1,
-            to: 0.02
-          }
-        });
-        dc.renderAll();
-      });
-    });
-
-
+    var refugeeFlows = L.layerGroup().addTo(map);
 
 
     ws = new WebSlides();
@@ -853,64 +794,28 @@
       crtDiv = $(".current div");
       //Map 1 'flyto' animation location and function
       if (crtDiv.attr("id") === "mymap") {
-
-        timer = setInterval(function() {}, 100);
-        clearInterval(timer);
-
+        refugeeFlows.clearLayers();
         $.getJSON("assets/migration.geojson", function(migration) {
 
+          for (let i = 0; i < 3; i++) {
+            setTimeout(function() {
+              lng = migration.features[i].geometry.coordinates[0];
+              lat = migration.features[i].geometry.coordinates[1];
 
-          for (let i = 0; i < migration.features.length; i++) {
-
-
-            timer = setInterval(function() {
-
-
-              L.swoopyArrow([4.85, 31.6], [migration.features[i].geometry.coordinates[1], migration.features[i].geometry.coordinates[0]], {
+              L.swoopyArrow([4.85, 31.6], [lat, lng], {
                 labelFontSize: 12,
                 iconAnchor: [20, 10],
                 iconSize: [30, 16],
                 color: '#FF00F6',
                 opacity: 0.7,
-                weight: '2'
-              }).addTo(map);
+                weight: '3'
+              }).addTo(refugeeFlows);
 
-
-
-            }, 200);
-
-
-
-            // setTimeout(function() {
-            //   lng = migration.features[i].geometry.coordinates[0];
-            //   lat = migration.features[i].geometry.coordinates[1];
-            //
-            //   L.swoopyArrow([4.85, 31.6], [lat, lng], {
-            //     labelFontSize: 12,
-            //     iconAnchor: [20, 10],
-            //     iconSize: [30, 16],
-            //     color: '#FF00F6',
-            //     opacity: 0.7,
-            //     weight: '2'
-            //   }).addTo(map);
-            //   // layergroup2.addLayer( L.marker([lat, lng], {icon: pwbIcon}));
-            //
-            // }, 400 * i);
-
-
-
-
-
-
+            }, 400 * i);
           }
-
-
         });
 
-
         chart.resize();
-
-
 
 
       } else if (crtDiv.attr("id") === "mymap2") {
@@ -931,20 +836,114 @@
           [3.5137, 31.3130]
         ]);
       } else if (crtDiv.attr("id") === "mycloud") {
-        dc.renderAll();
 
 
+
+
+        d3.csv('assets/locationbidiall.csv').then(function(data) {
+
+
+          var filter = crossfilter(data);
+
+          var all = filter.groupAll();
+
+          var everything = filter.dimension(function(d) {
+            return d
+          });
+
+
+          var dateDimension = filter.dimension(function(d) {
+
+            return d.Year;
+          });
+          var dateDimensionGroup = dateDimension.group();
+
+
+          var dateChart = dc.barChart('#chartword');
+          dateChart
+            .dimension(dateDimension)
+            .group(dateDimensionGroup)
+            .elasticY(true)
+            .x(d3.scaleOrdinal()) //
+            .xUnits(dc.units.ordinal)
+            .yAxis()
+            .ticks(3); //timeDate object that has the format for the date
+
+          dc.renderAll();
+
+          var texts = "";
+          everything.top(Infinity).filter(function(d) {
+            return texts += (" " + d.tags);
+          });
+
+          var frequencyList = null;
+          frequencyList = wordFrequency(texts, 6);
+
+          $("#cloud").jQCloud(frequencyList, {
+            colors: colorscheme,
+            autoResize: true,
+            delay: 5,
+            shape: 'rectangular',
+            fontSize: {
+              from: 0.1,
+              to: 0.02
+            }
+          });
+
+
+
+          dateChart.on('filtered', function(chartword, filter) {
+
+            var texts = "";
+            everything.top(Infinity).filter(function(d) {
+              return texts += (" " + d.tags);
+            });
+
+            frequencyList = wordFrequency(texts, 4);
+            $('#cloud').jQCloud('destroy');
+            $("#cloud").jQCloud(frequencyList, {
+              colors: colorscheme,
+              autoResize: true,
+              // steps: 20,
+              delay: 5,
+              shape: 'rectangular',
+              fontSize: {
+                from: 0.1,
+                to: 0.02
+              }
+            });
+            dc.renderAll();
+          });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //  dc.renderAll();
 
       }
 
 
-
-
-
-
-
-
     });
+
   </script>
 </body>
 
