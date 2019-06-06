@@ -19,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Julius+Sans+One|Montserrat|Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
   <link rel="shortcut icon" href="img/uganda.ico" type="image/x-icon">
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 
 
   <!-- Javascript Library -->
@@ -27,7 +28,8 @@
   <script src="js/webslides.min.js"></script>
   <script src="js/jqcloud.js"></script>
   <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-  </body>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.14/c3.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
@@ -63,7 +65,7 @@
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Generals_of_South_Sudan.jpg" alt="nategeo">
         </figure>
-        <div class="flex-content" style="background: white">
+        <div class="flex-content" style="background: #FAFAF8">
           <h2>Conflict in South Sudan</h2>
           <p> The civil war began in 2013, only two years after South Sudan gained independence from Sudan, after President Salva Kiir accused Vice President Riek Machar of planning a coup d’état.
             <br> <br>
@@ -75,7 +77,7 @@
     <!-- 3. Conflict characterization-->
     <section class="fullscreen">
       <div class="card-50">
-        <div class="flex-content" style="background: white">
+        <div class="flex-content" style="background:#FAFAF8">
           <h3>South Sundanese Civil War</h3>
           <p> It has been characterized by its large amounts of child soldiers, high rates of sexual violence, and ethnic cleansing between rival ethnic groups, mainly between the Dinkas and the Nuer, even though both political parties have
             supporters
@@ -91,7 +93,7 @@
     <section class="fullscreen">
       <div id="mymap"></div>
       <div class="card-50">
-        <div class="flex-content" style="background: white">
+        <div class="flex-content" style="background: #FAFAF8">
           <h2>The Juba Clashes</h2>
           <p>After a series of conflicts in July 2016 in Juba between the SPLM and SPLM-IO, migration to Uganda grew expontentially. The conflicts in Juba, the capital of South Sudan, led to extensive looting through out the city and about 300 people
             being killed. <br>The majority of the refugees displaced by the Juba Clashes moved to the northwestern area of Uganada, though some migrated further south.</p>
@@ -104,7 +106,7 @@
         <figure>
           <img src="https://live.staticflickr.com/8095/29494084820_c9d4b7929d_k.jpg" alt="nategeo">
         </figure>
-        <div class="flex-content">
+        <div class="flex-content"  style="background: #FAFAF8">
 
           <h1>Bidibidi Refugee Settlement</h1>
           <p> </p>
@@ -114,13 +116,14 @@
     <section class="fullscreen">
       <div id="mymap2"></div>
       <div class="card-50 ">
-        <div class="flex-content" style="background: white">
-          <h3>Bidibidi Refugee Settlement is located in the Northern Western area in Uganda</h3>
+        <div class="flex-content" style="background: #FAFAF8">
+          <h3>Bidibidi Refugee Settlement  Northern Western Uganda</h3> <br><br>
           <p> Once a small village in 2016.
             It is now a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a>
             <br><br> <a href="https://en.wikipedia.org/wiki/Bidi_Bidi_Refugee_Settlement">Bidibidi Refugee Setttlement</a> was considered the largest refugee settlement in 2017.
 
             <br> <br> There are multiple camps in the region.</p>
+            <br><br>
           <h2>Next two Slides:</h2>
           <p> Satellite Imagery of different areas in the camp showing how the landscape drastically changed over the two years with the influx of migration to the area.</p>
         </div>
@@ -240,14 +243,18 @@
           <div class="flex-content">
             <span class="background" style="background-image:url('img/bidi.png')"></span>
             <figure id="chartword"></figure>
-            <div id="info2">
-              <span class="alignleft"> <a href="https://www.instagram.com/explore/locations/1281867775213393/bidibidi-refugee-settlement-northern-uganda/" title="Instagram">
-                  <img class="blacklogo" src="img/instagram.svg" alt="Instagram">
+            <footer class="bg-trans-dark">
+            <div class="wrap">
+              <p>
+                <span class="alignleft"> <a href="#" title="Instagram">
+                <img class="whitelogo" src="img/instagram.svg" alt="Instagram">
                 </a></span>
-              <p> <br> <br> </p>
+              <br>
               <h4>Select a year in bar graph : </h4>
               <h6>Hashtags weighted off of their frequency in the year. <br> Y-axis Number of posts in the given year. <br> X-axis: Instagram Post within the Year</h6><br><br>
+              </p>
             </div>
+          </footer>
           </div>
         </div>
       </div>
@@ -340,42 +347,10 @@
       scrollWheelZoom: false
     }).setView([2.1894481, 28.8365927], 7);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
+    L.tileLayer('https://api.mapbox.com/styles/v1/loweas/cjwkvgg7u43h61cqddmjogac9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ', {
+      attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a> contributors &copy',
       maxZoom: 19
     }).addTo(map);
-
-
-    L.geoJson.ajax("assets/southanduga.geojson", {
-
-      style: function(feature) {
-        switch (feature.properties.ADM0_EN) {
-          case 'Uganda':
-            return {
-              color: "#00FF2A"
-            };
-        }
-      }
-    }).addTo(map);
-
-    L.geoJson.ajax("assets/settlements.json", {
-      onEachFeature: function(feature, layer) {
-        layer.bindTooltip(feature.properties.name, {
-          sticky: true,
-          className: "feature-tooltip"
-        });
-      },
-      style: function(feature) {
-        switch (feature.properties.name) {
-          case 'Bidi Bidi Refugee Settlement':
-            return {
-              color: "#FF00F6"
-            };
-        }
-      }
-    }).addTo(map);
-
 
 
 
@@ -557,23 +532,30 @@
         });
       }
     });
-    var police = L.geoJson.ajax('assets/policecommunity.geojson', {
+
+
+    var police = L.geoJson.ajax('assets/police.geojson', {
       pointToLayer: function(feature, latlng) {
-        if (feature.properties.amenity == "police") {
+          return L.marker(latlng, {
+            icon:'<img src="img/police.svg" alt="" style="width:30px;height:20px;">',
+
+          });
+      },
+      onEachFeature: function(feature, layer) {
+        layer.bindTooltip(feature.properties.name, {
+          sticky: true,
+          className: "feature-tooltip"
+        });
+      }
+    });
+
+    var community = L.geoJson.ajax('assets/community.geojson', {
+      pointToLayer: function(feature, latlng) {
           return L.marker(latlng, {
             icon: L.divIcon({
-              html: '<img src="img/police.svg" alt="" style="width:30px;height:20px;">',
-              className: 'marker-icon-2'
+              html: '<img src="img/community.svg" alt="" style="width:30px;height:20px;">',
             })
           });
-        } else {
-          return L.marker(latlng, {
-            icon: L.divIcon({
-              html: '<img src="img/community.svg" alt="" style="width:40px;height:30px;">',
-              className: 'marker-icon-2'
-            })
-          });
-        }
       },
       onEachFeature: function(feature, layer) {
         layer.bindTooltip(feature.properties.name, {
@@ -621,9 +603,10 @@
     var overlays = {
       "Health Centers": health,
       "Schools": education,
-      "Police and Community Centers": police,
+      "Community Center": community,
       "Shops": mobile,
       "Places of Worship": worship,
+      "Police": police,
     };
 
     var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
@@ -637,15 +620,11 @@
       'Grey Scale': map3,
       'No Labels': CartoDB_PositronNoLabels,
       'Satellite': satellite
-
-    };
-
+  };
 
     L.control.layers(baseMaps, overlays, {
       collapsed: false
     }).addTo(map3);
-
-
 
 
     Promise.all([
@@ -794,12 +773,12 @@
       //Map 1 'flyto' animation location and function
       if (crtDiv.attr("id") === "mymap") {
         refugeeFlows.clearLayers();
-        $.getJSON("assets/migration.geojson", function(migration) {
+        $.getJSON("assets/poparea.geojson", function(poparea) {
 
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i < poparea.features.length; i++) {
             setTimeout(function() {
-              lng = migration.features[i].geometry.coordinates[0];
-              lat = migration.features[i].geometry.coordinates[1];
+              lng = poparea.features[i].geometry.coordinates[0];
+              lat = poparea.features[i].geometry.coordinates[1];
 
               L.swoopyArrow([4.85, 31.6], [lat, lng], {
                 labelFontSize: 12,
@@ -837,12 +816,7 @@
         ]);
       } else if (crtDiv.attr("id") === "mycloud") {
 
-
-
-
         d3.csv('assets/locationbidiall.csv').then(function(data) {
-
-
           var filter = crossfilter(data);
 
           var all = filter.groupAll();
@@ -915,13 +889,7 @@
             dc.renderAll();
           });
         });
-
-
-
-
       }
-
-
     });
 
   </script>

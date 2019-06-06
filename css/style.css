@@ -148,7 +148,7 @@ a:active {
 p {
   font-family: 'Alegreya Sans SC', sans-serif;
   margin: 0 0 5px;
-  color: #065581;
+
   font-size: 18px;
 }
 
@@ -178,7 +178,7 @@ p {
   width: 100%;
   color: black;
   padding: 6px 8px;
-  background: #EAEDED;
+  background: #FAFAF8;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   font-family: 'Alegreya Sans SC', sans-serif;
 }
@@ -192,9 +192,9 @@ p {
 
 .leaflet-control-layers {
   color: #333333 !important;
-  padding: 6px 8px;
-  width: 20vw !important;
-  height: 300px;
+  padding: 2px 2px;
+  width: 200px!important;
+  height: 350px;
   border: none !important;
   background: rgba(225, 225, 225, 0.5) !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2) !important;
