@@ -115,17 +115,14 @@
       <div id="mymap2"></div>
       <div class="card-50 ">
         <div class="flex-content" style="background: white">
-          <h1>This is Bidibidi Refugee Settlement <span>
-              <img src="img/arrow2.svg" alt="arrow">
-            </span></h1>
-          <p> Bidibidi was a small village prior to 2016.
+          <h3>Bidibidi Refugee Settlement is located in the Northern Western area in Uganda</h3>
+          <p> Once a small village in 2016.
             It is now a <a href="https://www.nationalgeographic.com/magazine/2019/04/how-bidibidi-uganda-refugee-camp-became-city/">city</a>
             <br><br> <a href="https://en.wikipedia.org/wiki/Bidi_Bidi_Refugee_Settlement">Bidibidi Refugee Setttlement</a> was considered the largest refugee settlement in 2017.
-            <br><br> The landscape drastically changed over the last few years with the influx of migration to the area.
 
             <br> <br> There are multiple camps in the region.</p>
           <h2>Next two Slides:</h2>
-          <p> Satellite Imagery of different areas in the camp.</p>
+          <p> Satellite Imagery of different areas in the camp showing how the landscape drastically changed over the two years with the influx of migration to the area.</p>
         </div>
       </div>
     </section>
@@ -247,7 +244,7 @@
     </section>
     <!-- 7. Wordcloud Map-->
     <section class="fullscreen">
-      <div id="mycloud" class="wrap">
+      <div id="mycloud">
         <div class="card-50 bg-white">
           <figure id="cloud"></figure>
           <div class="flex-content">
@@ -442,25 +439,38 @@
         }
       }
     }).addTo(map2);
-    // L.geoJson.ajax("assets/camps.geojson", {
-    //   onEachFeature: function(feature, layer) {
-    //     layer.bindTooltip(feature.properties.name, {
-    //       sticky: true,
-    //       permanent: true,
-    //       className: "feature-tooltip"
-    //     });
-    //   },
-    //   style: function(feature) {
-    //     return {
-    //       color: "#d8d815"
-    //     }
-    //
-    //   }
-    // }).addTo(map2);
+    L.geoJson.ajax("assets/camps.geojson", {
+      onEachFeature: function(feature, layer) {
+        layer.bindTooltip(feature.properties.name, {
+          sticky: true,
+          className: "feature-tooltip"
+        });
+      },
+      style: function(feature) {
+        return {
+          color: "#d8d815"
+        }
 
-    var lable_1080 = L.marker(new L.LatLng(3.2767997, 31.2946834), {
+      }
+    }).addTo(map2);
+
+    var lable_1080 = L.marker(new L.LatLng(3.469691945  , 31.3860517569), {
       icon: createLabelIcon("textLabelclass", "Zone 1")
     }).addTo(map2);
+
+    var lable_1082 = L.marker(new L.LatLng( 3.5280046043 , 31.3468093002), {
+      icon: createLabelIcon("textLabelclass", "Zone 2")
+    }).addTo(map2);
+
+    var lable_1084 = L.marker(new L.LatLng( 3.3346508673 , 31.3021314753), {
+      icon: createLabelIcon("textLabelclass", "Zone 4")
+    }).addTo(map2);
+
+    var lable_1085 = L.marker(new L.LatLng( 3.2849238045, 31.3945159302), {
+      icon: createLabelIcon("textLabelclass", "Zone 5")
+    }).addTo(map2);
+
+
 
 
     var map3 = L.map("mymap3", {
@@ -475,8 +485,7 @@
     L.geoJson.ajax("assets/southanduga.geojson", {
 
       style: function(feature) {
-        switch (feature.properties.ADM0_EN) {
-          case 'Uganda':
+        if (feature.properties.ADM0_EN="Uganda") {
             return {
               color: "#00FF2A"
             };
@@ -825,6 +834,7 @@
           animate: true,
           duration: 4
         });
+        map2.invalidateSize();
 
       } else if (crtDiv.attr("id") === "mypop") {
 
@@ -918,26 +928,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      //  dc.renderAll();
 
       }
 
