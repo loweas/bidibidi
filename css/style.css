@@ -208,3 +208,9 @@ label {
   margin-bottom: 0px;
 
 }
+
+.minimap{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
