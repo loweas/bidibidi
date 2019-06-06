@@ -360,9 +360,12 @@
       iconSize: [25, 30], // size of the icon
     });
 
-
     L.marker([4.85, 31.6], {
       icon: conflict
+    }).addTo(map);
+
+    var lable_1086 = L.marker(new L.LatLng(5.25, 31.6), {
+      icon: createLabelIcon("textLabelclass", "Juba")
     }).addTo(map);
 
     var map2 = L.map("mymap2", {
