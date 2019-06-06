@@ -537,15 +537,24 @@
       }
     });
 
+    var policeIcon =  L.icon({
+      iconUrl:'img/police.svg',
+      iconSize: [25, 25]
+    });
+    var communityIcon =  L.icon({
+      iconUrl:'img/community.svg',
+      iconSize: [25, 25]
+    });
 
     var police = L.geoJson.ajax('assets/police.geojson', {
       pointToLayer: function(feature, latlng) {
           return L.marker(latlng, {
-            icon: L.divIcon({
-
-            iconUrl: '<img src="img/police.svg" alt="" style="width:30px;height:20px;">',
-            })
-          });
+            icon: policeIcon
+            // icon: L.divIcon({
+            //
+            // iconUrl: '<img src="img/police.svg" alt="" style="width:30px;height:20px;">',
+            // })
+        });
       },
       onEachFeature: function(feature, layer) {
         layer.bindTooltip(feature.properties.name, {
@@ -558,9 +567,7 @@
     var community = L.geoJson.ajax('assets/community.geojson', {
       pointToLayer: function(feature, latlng) {
           return L.marker(latlng, {
-            icon: L.divIcon({
-              html: '<img src="img/community.svg" alt="" style="width:30px;height:20px;">',
-            })
+            icon: communityIcon
           });
       },
       onEachFeature: function(feature, layer) {
