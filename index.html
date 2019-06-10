@@ -771,6 +771,79 @@
       return filteredArray;
 
     }
+    d3.csv('assets/locationbidiall.csv').then(function(data) {
+      var filter = crossfilter(data);
+
+      var all = filter.groupAll();
+
+      var everything = filter.dimension(function(d) {
+        return d
+      });
+
+
+      var dateDimension = filter.dimension(function(d) {
+
+        return d.Year;
+      });
+      var dateDimensionGroup = dateDimension.group();
+
+
+      var dateChart = dc.barChart('#chartword');
+      dateChart
+        .dimension(dateDimension)
+        .group(dateDimensionGroup)
+        .elasticY(true)
+        .x(d3.scaleOrdinal()) //
+        .xUnits(dc.units.ordinal)
+        .yAxis()
+        .ticks(3); //timeDate object that has the format for the date
+
+      dc.renderAll();
+
+      var texts = "";
+      everything.top(Infinity).filter(function(d) {
+        return texts += (" " + d.tags);
+      });
+
+      var frequencyList = null;
+      frequencyList = wordFrequency(texts, 6);
+
+      $("#cloud").jQCloud(frequencyList, {
+        colors: colorscheme,
+        autoResize: true,
+        delay: 5,
+        shape: 'rectangular',
+        fontSize: {
+          from: 0.1,
+          to: 0.02
+        }
+      });
+
+
+
+      dateChart.on('filtered', function(chartword, filter) {
+
+        var texts = "";
+        everything.top(Infinity).filter(function(d) {
+          return texts += (" " + d.tags);
+        });
+
+        frequencyList = wordFrequency(texts, 4);
+        $('#cloud').jQCloud('destroy');
+        $("#cloud").jQCloud(frequencyList, {
+          colors: colorscheme,
+          autoResize: true,
+          // steps: 20,
+          delay: 5,
+          shape: 'rectangular',
+          fontSize: {
+            from: 0.1,
+            to: 0.02
+          }
+        });
+        dc.renderAll();
+      });
+    });
 
 
     colorscheme = chroma.scale('Dark2').colors(10).reverse();
@@ -829,81 +902,18 @@
         ]);
       } else if (crtDiv.attr("id") === "mycloud") {
 
-        d3.csv('assets/locationbidiall.csv').then(function(data) {
-          var filter = crossfilter(data);
 
-          var all = filter.groupAll();
-
-          var everything = filter.dimension(function(d) {
-            return d
-          });
-
-
-          var dateDimension = filter.dimension(function(d) {
-
-            return d.Year;
-          });
-          var dateDimensionGroup = dateDimension.group();
-
-
-          var dateChart = dc.barChart('#chartword');
-          dateChart
-            .dimension(dateDimension)
-            .group(dateDimensionGroup)
-            .elasticY(true)
-            .x(d3.scaleOrdinal()) //
-            .xUnits(dc.units.ordinal)
-            .yAxis()
-            .ticks(3); //timeDate object that has the format for the date
-
-          dc.renderAll();
-
-          var texts = "";
-          everything.top(Infinity).filter(function(d) {
-            return texts += (" " + d.tags);
-          });
-
-          var frequencyList = null;
-          frequencyList = wordFrequency(texts, 6);
-
-          $("#cloud").jQCloud(frequencyList, {
-            colors: colorscheme,
-            autoResize: true,
-            delay: 5,
-            shape: 'rectangular',
-            fontSize: {
-              from: 0.1,
-              to: 0.02
-            }
-          });
-
-
-
-          dateChart.on('filtered', function(chartword, filter) {
-
-            var texts = "";
-            everything.top(Infinity).filter(function(d) {
-              return texts += (" " + d.tags);
-            });
-
-            frequencyList = wordFrequency(texts, 4);
-            $('#cloud').jQCloud('destroy');
-            $("#cloud").jQCloud(frequencyList, {
-              colors: colorscheme,
-              autoResize: true,
-              // steps: 20,
-              delay: 5,
-              shape: 'rectangular',
-              fontSize: {
-                from: 0.1,
-                to: 0.02
-              }
-            });
-            dc.renderAll();
-          });
-        });
       }
     });
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141661518-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141661518-1');
+</script>
 
   </script>
 </body>
