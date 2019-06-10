@@ -216,7 +216,13 @@ label {
   bottom: 0;
 }
 q {
-  font-style: italic;
+  color: #01B3CB;
+  background-color: transparent;
+font-family: 'Alegreya Sans SC', sans-serif;
+}
+q:link{
+  color: white;
+  background-color: transparent;
 font-family: 'Alegreya Sans SC', sans-serif;
 }
 
@@ -224,8 +230,7 @@ font-family: 'Alegreya Sans SC', sans-serif;
   position: fixed;
   bottom:60px;
   left:40px;
-  width:300px;
-  background-color: rgba(0,0,0,.3);
+  background-color: transparent;
   border-radius: 2px;
   font-size: 30px;
 }
