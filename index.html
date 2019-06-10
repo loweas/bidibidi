@@ -58,12 +58,27 @@
           Changing Landscape of Bidibidi Refugee Settlement
         </h1>
       </div>
+      <div class="slideshow-container">
+      <div class="mySlides">
+             <q><a href="https://www.flickr.com/photos/climatecentre/">Climate Centre</a> </q>
+           </div>
+           <div class="mySlides">
+                  <q><a href="https://www.instagram.com/noralorek/">@noralorek</a> </q>
+                </div>
+                <div class="mySlides">
+                       <q><a href="https://www.instagram.com/natgeo/">@natgeo</a> </q>
+                     </div>
+                     </div>
     </section>
     <!-- 2. Start of the Conflict-->
     <section class="fullscreen">
       <div class="card-50">
         <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Generals_of_South_Sudan.jpg" alt="nategeo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Generals_of_South_Sudan.jpg" alt="">
+          <figcaption>
+
+  <h3><a href="https://www.flickr.com/people/64749744@N00">Steve Evans</a></h3>
+</figcaption>
         </figure>
         <div class="flex-content" style="background: #FAFAF8">
           <h2>Conflict in South Sudan</h2>
@@ -82,11 +97,15 @@
           <p> It has been characterized by its large amounts of child soldiers, high rates of sexual violence, and ethnic cleansing between rival ethnic groups, mainly between the Dinkas and the Nuer, even though both political parties have
             supporters
             from both groups.
-            <br><br>An estimated 400,000 people have been killed and forced another 2.5 million people to flee to other countries. </p>
+            <br><br>An estimated <a href="https://www.nytimes.com/2018/09/26/world/africa/south-sudan-civil-war-deaths.html">400,000</a> people have been killed and forced another 2.5 million people to flee to other countries. </p>
           <!-- A peace deal was signed in September 2018 between the SPLM and the SPLM-IO and pledged to restore peace and stability, as well as rebuild the livelihoods and homes that were destroyed. The peace deal hasn’t yet been deemed a success however, as South Sudan still has a long way to go in repairing it’s fractured government and military.</p> -->
         </div>
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/SPLA_soldiers_near_Juba_%28April_2016%29_3.jpg" alt="Jason Patinkin ">
+          <figcaption>
+
+  <h3><a href="https://www.voanews.com/a/government-soldiers-leave-juba-before-rebel-leaders-return/3286194.html">Jason Patinkin</a></h3>
+</figcaption>
         </figure>
     </section>
     <!-- 4. Juba conflict-->
@@ -105,6 +124,10 @@
       <div class="card-50">
         <figure>
           <img src="https://live.staticflickr.com/8095/29494084820_c9d4b7929d_k.jpg" alt="nategeo">
+          <figcaption>
+
+  <h3><a href="https://www.flickr.com/photos/climatecentre/29786478455">Climate Centre</a></h3>
+</figcaption>
         </figure>
         <div class="flex-content"  style="background: #FAFAF8">
 
@@ -227,6 +250,10 @@
       <div class="card-50">
         <figure>
           <img src="https://live.staticflickr.com/8105/29673871242_e49753869f_k.jpg" alt="nategeo">
+          <figcaption>
+
+  <h3><a href="https://www.flickr.com/photos/climatecentre/29786478455">Climate Centre</a></h3>
+</figcaption>
         </figure>
         <div class="flex-content">
           <h1> Bidibidi WordCloud </h1>
@@ -264,7 +291,11 @@
       <div class="card-60">
         <figure>
           <img src="https://scontent-sea1-1.cdninstagram.com/vp/214068bc6b599fb0cc1e956b68ef3265/5D37960C/t51.2885-15/e35/22351698_1157608411038733_1516996205727449088_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com" alt="nategeo">
-        </figure>
+          <figcaption>
+
+  <h3><a href="https://www.instagram.com/p/BaIyhXCDrH-/">@natgeo</a></h3>
+</figcaption>
+      </figure>
         <div class="flex-content" style="background: white">
           <h3>Thank You for Viewing</h3>
           <p>Currently, the most liked photo on <a href="https://www.instagram.com/p/BaIyhXCDrH-/">Instagram</a> at the geotagged location Bidibidi Refugee Settlement</p><br><br>
@@ -330,6 +361,34 @@
 
   <script>
     var chart, timer;
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function autoPlaySlideShow() {
+slideIndex = slideIndex+1;
+showSlides(slideIndex);
+//showSlides(2); old code
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+  slides[slideIndex-1].style.display = "block";
+}
+setInterval(autoPlaySlideShow,9000);
 
 
 

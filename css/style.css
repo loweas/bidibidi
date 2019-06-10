@@ -74,7 +74,7 @@ a:link {
 }
 
 a:visited {
-  color: orange;
+  color: #01B3CB;
   background-color: transparent;
   text-decoration: none;
 }
@@ -214,4 +214,18 @@ label {
   position: fixed;
   right: 0;
   bottom: 0;
+}
+q {
+  font-style: italic;
+font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.slideshow-container {
+  position: fixed;
+  bottom:60px;
+  left:40px;
+  width:300px;
+  background-color: rgba(0,0,0,.3);
+  border-radius: 2px;
+  font-size: 30px;
 }
