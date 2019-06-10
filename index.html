@@ -788,6 +788,10 @@ setInterval(autoPlaySlideShow,9000);
     var pastTile2 = L.tileLayer('https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/29387/{z}/{y}/{x}', {
       maxZoom: 19
     });
+
+    L.control.scale().addTo(satelliteMap);
+    L.control.scale().addTo(satelliteMap2);
+
     pastTile.addTo(satelliteMap);
     pastTile2.addTo(satelliteMap2);
     presentTile.addTo(satelliteMap);
