@@ -521,6 +521,7 @@ setInterval(autoPlaySlideShow,9000);
       }
     }).addTo(map3);
 
+    L.control.scale().addTo(map3);
 
     L.geoJson.ajax("assets/camps.geojson", {
       onEachFeature: function(feature, layer) {
@@ -791,6 +792,34 @@ setInterval(autoPlaySlideShow,9000);
 
     L.control.scale().addTo(satelliteMap);
     L.control.scale().addTo(satelliteMap2);
+
+    var landmarks = null;
+    var landmarks2 = null;
+
+    landmarks = L.geoJson.ajax("assets/satelliteMarkers.geojson",{
+      onEachFeature: function (feature, layer){
+        layer.bindPopup(feature.properties.caption);
+      }
+    });
+    landmarks2 = L.geoJson.ajax("assets/satelliteMarkers.geojson",{
+      onEachFeature: function (feature, layer){
+        layer.bindPopup(feature.properties.caption);
+      }
+    });
+
+    landmarks.addTo(satelliteMap);
+    landmarks2.addTo(satelliteMap2);
+
+    //points to add
+    /*
+    map 1
+      3.521502, 31.337899 water storage
+      3.521177, 31.334778 food dist. center
+      3.521800, 31.335601 new roadway
+    map 2
+      3.457873, 31.354188 small village, primary school, trading center
+      3.458974, 31.355887 liberty baptist church
+    */
 
     pastTile.addTo(satelliteMap);
     pastTile2.addTo(satelliteMap2);
